@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="custard">#ffe5a3</color>
+    <color name="sunbeam">#fcdb66</color>
+    <color name="amber">#f19a3a</color>
+    <color name="timber">#a8785d</color>
+    <color name="russet">#b36902</color>
+    <color name="terracotta">#b6503e</color>
+    <color name="cream">#f5f3cd</color>
+</resources>
