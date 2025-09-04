@@ -163,7 +163,7 @@
                 android:focusable="true" />
 
             <TextView
-                android:id="@+id/filterSoft"
+                android:id="@+id/filterMilk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/milk"
@@ -176,7 +176,7 @@
                 android:focusable="true" />
 
             <TextView
-                android:id="@+id/filterHard"
+                android:id="@+id/filterTexture"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/texture"
@@ -189,7 +189,7 @@
                 android:focusable="true" />
 
             <TextView
-                android:id="@+id/filterBlue"
+                android:id="@+id/filterAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/age"
@@ -202,7 +202,7 @@
                 android:focusable="true" />
 
             <TextView
-                android:id="@+id/filterFresh"
+                android:id="@+id/filterFlavour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/flavour"
@@ -216,6 +216,7 @@
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
     <!-- Main Content Area -->
     <FrameLayout
         android:id="@+id/mainContent"
@@ -232,32 +233,14 @@
             android:id="@+id/catalogFrame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerCheeseCatalogView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:padding="5dp"
-                tools:listitem="@layout/cheese_item"/>
-        </FrameLayout>
+            android:visibility="visible"/>
 
         <!-- Favourite Frame -->
         <FrameLayout
             android:id="@+id/favouriteFrame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerCheeseFavouriteView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:padding="8dp"
-                tools:listitem="@layout/cheese_favourite_item"/>
-        </FrameLayout>
+            android:visibility="gone"/>
     </FrameLayout>
 
     <!-- Footer -->

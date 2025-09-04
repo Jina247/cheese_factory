@@ -24,8 +24,7 @@
             android:layout_height="140dp"
             android:layout_marginEnd="12dp"
             android:scaleType="centerCrop"
-            android:alpha="0.8"
-            android:src="@drawable/brie" />
+            android:alpha="0.8"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -41,7 +40,6 @@
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="start"
-                android:text="Brie"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -52,7 +50,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:fontFamily="@font/poppins"
-                android:text="A soft French cheese with a creamy texture"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp"
                 android:maxLines="2"

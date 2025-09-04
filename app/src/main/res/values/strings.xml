@@ -7,82 +7,11 @@
     <string name="age">Age</string>
     <string name="texture">Texture</string>
     <string name="flavour">Flavour</string>
-    <string name="search_cheeses">Search cheeses...</string>
+    <string name="search_cheeses">Search cheeses…</string>
     <string name="filter_by_category">Filter by Category</string>
     <string name="all_cheeses">All Cheeses</string>
-
-    <resources>
-        <!-- Cheese Names -->
-        <string-array name="cheese_names">
-            <item>Brie</item>
-            <item>Burrata</item>
-            <item>Cabrales</item>
-            <item>Camembert</item>
-            <item>Cheddar</item>
-            <item>Chevre</item>
-            <item>Colby</item>
-            <item>Cottage Cheese</item>
-            <item>Emmental</item>
-            <item>Garrotxa</item>
-            <item>Gouda</item>
-            <item>Gruyere</item>
-            <item>Havarti</item>
-            <item>Manchego</item>
-            <item>Mascarpone</item>
-            <item>Mozzarella</item>
-            <item>Mozzarella di Bufala</item>
-            <item>Parmesan</item>
-            <item>Pecorino Romano</item>
-            <item>Roquefort</item>
-        </string-array>
-
-        <!-- Short Descriptions -->
-        <string-array name="cheese_short_desc">
-            <item>Soft French cheese with bloomy rind.</item>
-            <item>Creamy mozzarella ball with soft filling.</item>
-            <item>Strong Spanish blue cheese.</item>
-            <item>French soft cheese, creamy and rich.</item>
-            <item>Sharp, popular hard cheese.</item>
-            <item>Tangy goat’s milk cheese.</item>
-            <item>American mild cheese, similar to cheddar.</item>
-            <item>Fresh, mild, and milky curds.</item>
-            <item>Swiss cheese with holes and nutty flavor.</item>
-            <item>Catalan semi-firm goat cheese.</item>
-            <item>Smooth Dutch cheese, slightly sweet.</item>
-            <item>Swiss cheese, nutty and great for melting.</item>
-            <item>Buttery Danish cheese, mild and creamy.</item>
-            <item>Spanish sheep’s milk cheese.</item>
-            <item>Italian sweet cream cheese.</item>
-            <item>Classic pizza cheese, stretchy and mild.</item>
-            <item>Buffalo milk mozzarella, creamier taste.</item>
-            <item>Hard Italian cheese, salty and nutty.</item>
-            <item>Italian sheep’s milk cheese, sharp and salty.</item>
-            <item>French blue cheese, tangy and bold.</item>
-        </string-array>
-
-        <!-- Detailed Descriptions -->
-        <string-array name="cheese_detail_desc">
-            <item>Brie is a French cheese with a soft rind and creamy interior. It has a buttery, mild flavor that becomes earthier with age. Often baked or paired with fruits, crackers, and wine, Brie is a classic for cheese boards and party platters.</item>
-            <item>Burrata is an Italian cheese made from mozzarella and cream. The outer shell is solid mozzarella, while the inside contains stracciatella and cream, giving it a rich, soft texture. It’s perfect on fresh salads, paired with tomatoes, or spread over toasted bread.</item>
-            <item>Cabrales is a strong Spanish blue cheese traditionally aged in caves. It’s tangy, salty, and pungent, making it a bold choice for cheese lovers. It’s often crumbled over salads, melted into sauces, or served with honey and bread.</item>
-            <item>Camembert is a soft, creamy cheese from France, similar to Brie but with a deeper earthy flavor. It pairs beautifully with baguettes, fruits, and light wines. It’s also delicious baked whole until gooey and spreadable.</item>
-            <item>Cheddar is a hard English cheese that ranges from mild to extra sharp depending on its age. It melts beautifully, making it perfect for sandwiches, mac and cheese, and burgers. A true all-rounder in the cheese world.</item>
-            <item>Chèvre is French goat cheese, ranging from fresh and creamy to firm and aged. It has a tangy, slightly earthy flavor. It’s often crumbled on salads, spread on bread, or baked into savory tarts.</item>
-            <item>Colby is an American cheese similar to cheddar but softer and milder. It’s often used in sandwiches, burgers, and mac and cheese. It’s a family favorite for its approachable taste.</item>
-            <item>Cottage cheese is a fresh cheese curd product with a mild flavor. Its soft, lumpy texture makes it versatile for both sweet and savory dishes. It’s popular in healthy meals, fruit bowls, and as a protein-rich snack.</item>
-            <item>Emmental is a Swiss cheese known for its iconic holes. It has a mild, nutty flavor and melts smoothly, making it perfect for fondues, grilled cheese sandwiches, and casseroles.</item>
-            <item>Garrotxa is a semi-firm goat cheese from Catalonia, Spain. It has a gray rind and a mild, nutty flavor with herbal notes. It pairs well with nuts, fruit, and crisp white wines.</item>
-            <item>Gouda is a Dutch cheese with a smooth texture and sweet, caramel-like flavor. Younger Goudas are mild, while aged ones become firmer and sharper. It’s excellent for snacking, sandwiches, or melting into dishes.</item>
-            <item>Gruyère is a Swiss cheese with a firm, dense texture and a nutty flavor. It melts beautifully, which makes it the classic choice for fondue, French onion soup, and gratins.</item>
-            <item>Havarti is a semi-soft Danish cheese with a buttery texture and mild, slightly tangy flavor. It’s perfect for sandwiches, grilled cheese, or sliced on crackers with fruit.</item>
-            <item>Manchego is a Spanish cheese made from sheep’s milk. It’s firm and buttery with a nutty, slightly tangy flavor. It’s often enjoyed with quince paste, olives, and cured meats.</item>
-            <item>Mascarpone is a rich, creamy Italian cheese with a sweet flavor. It’s best known as the base for tiramisu but also works well in cheesecakes, frostings, and savory pasta sauces.</item>
-            <item>Mozzarella is a fresh Italian cheese with a mild flavor and stretchy texture. It’s the ultimate pizza topping, also great in caprese salads, sandwiches, and pasta bakes.</item>
-            <item>Mozzarella di Bufala is made from water buffalo milk, giving it a creamier and tangier taste than regular mozzarella. It’s prized for caprese salads, gourmet pizzas, and fresh Italian dishes.</item>
-            <item>Parmesan, or Parmigiano-Reggiano, is a hard Italian cheese with a salty, nutty flavor. It’s commonly grated over pasta, risotto, soups, and salads. Aged varieties have deep, complex flavors perfect for snacking too.</item>
-            <item>Pecorino Romano is a hard Italian cheese made from sheep’s milk. It’s sharper and saltier than Parmesan, ideal for grating over pasta dishes like carbonara and amatriciana.</item>
-            <item>Roquefort is a French blue cheese made from sheep’s milk. It has a bold, tangy, and salty flavor with blue veins throughout. It’s delicious in salads, sauces, or spread on rustic bread.</item>
-        </string-array>
-    </resources>
+    <string name="like_button">Like button</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 
