@@ -12,11 +12,10 @@ class CheeseViewModel: ViewModel() {
     val favouriteCheeseList: LiveData<MutableList<CheeseData>> = _favouriteCheeseList
 
     fun setUpCheese(cheeseImage : Array<Int>, cheeseName: Array<String>,
-                    cheeseShortDesc: Array<String>, cheeseDetailDesc: Array<String>) {
+                    cheeseShortDesc: Array<String>) {
         val cheeses: MutableList<CheeseData> = mutableListOf()
         for (i in cheeseName.indices) {
-            cheeses.add(CheeseData(cheeseImage[i], cheeseName[i],
-                cheeseShortDesc[i], false))
+            cheeses.add(CheeseData(cheeseImage[i], cheeseName[i], cheeseShortDesc[i], false))
         }
         _cheeseList.value = cheeses
         _favouriteCheeseList.value = mutableListOf()
@@ -42,5 +41,6 @@ class CheeseViewModel: ViewModel() {
         } else {
             addToFavourites(cheese, currentFavs)
         }
+        _cheeseList.value = _cheeseList.value
     }
 }

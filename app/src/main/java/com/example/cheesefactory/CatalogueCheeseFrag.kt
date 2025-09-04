@@ -1,24 +1,41 @@
 package com.example.cheesefactory
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
-
 
 class CatalogueCheeseFrag : Fragment() {
+    val cheeseImg = arrayOf(
+        R.drawable.brie,
+        R.drawable.burrata,
+        R.drawable.cabrales,
+        R.drawable.camembert,
+        R.drawable.cheddar,
+        R.drawable.chevre,
+        R.drawable.colby,
+        R.drawable.cottage,
+        R.drawable.emmental,
+        R.drawable.garrotxa,
+        R.drawable.gouda,
+        R.drawable.gru,
+        R.drawable.havarti,
+        R.drawable.manchego,
+        R.drawable.mascarpone,
+        R.drawable.mozzarella,
+        R.drawable.mozzarella_di_bufala,
+        R.drawable.parmesan,
+        R.drawable.pecorino_romano,
+        R.drawable.roquefort
+    )
     private lateinit var viewModel: CheeseViewModel
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var cheeseAdapter: CheeseAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,15 +47,32 @@ class CatalogueCheeseFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cheeseImage : ImageView = view.findViewById(R.id.cheeseImage)
-        val cheeseName : TextView = view.findViewById(R.id.cheeseName)
-        val cheeseShortDesc : Text = view.findViewById(R.id.cheeseDescription)
-        val like: ImageButton = view.findViewById(R.id.likeButton)
         viewModel = ViewModelProvider(requireActivity())[CheeseViewModel::class.java]
+        val cheeseName = resources.getStringArray(R.array.cheese_names)
+        val cheeseShortDesc = resources.getStringArray(R.array.cheese_short_desc)
+        viewModel.setUpCheese(cheeseImg, cheeseName, cheeseShortDesc)
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerCheeseCatalogView)
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
+
         viewModel.cheeseList.observe(viewLifecycleOwner) { cheeseData ->
-            recyclerView.adapter = CheeseAdapter(cheeseData, requireContext())
+            cheeseAdapter = CheeseAdapter(
+                cheeseData,
+                requireContext()
+            ) { clickedCheese ->
+                val message = if (clickedCheese.isLiked) {
+                    "${clickedCheese.name} removed from favorites"
+                } else {
+                    "${clickedCheese.name} added to favorites!"
+                }
+
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+
+                val currentFavs = viewModel.favouriteCheeseList.value ?: mutableListOf()
+                viewModel.doLike(clickedCheese, currentFavs)
+            }
+            recyclerView.adapter = cheeseAdapter
         }
+
     }
 }

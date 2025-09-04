@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CheeseAdapter(
     private val cheese: List<CheeseData>,
-    private val context: Context
+    private val context: Context,
+    private val onLikeClick: (CheeseData) -> Unit
 ): RecyclerView.Adapter<CheeseAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -27,10 +28,19 @@ class CheeseAdapter(
         holder: ViewHolder,
         position: Int
     ) {
-        val cheese = cheese[position]
-        holder.cheeseName.text = cheese.name
-        holder.shortDes.text = cheese.shortDescription
-        holder.cheeseImg.setImageResource(cheese.image)
+        val cheeseItem = cheese[position]
+        holder.cheeseName.text = cheeseItem.name
+        holder.shortDes.text = cheeseItem.shortDescription
+        holder.cheeseImg.setImageResource(cheeseItem.image)
+
+        if (!cheeseItem.isLiked) {
+            holder.likeBtn.setImageResource(R.drawable.like)
+        } else {
+            holder.likeBtn.setImageResource(R.drawable.liked)
+        }
+        holder.likeBtn.setOnClickListener {
+            onLikeClick(cheeseItem)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -41,6 +51,7 @@ class CheeseAdapter(
         val cheeseName: TextView = view.findViewById(R.id.cheeseName)
         val shortDes: TextView = view.findViewById(R.id.cheeseDescription)
         val cheeseImg: ImageView = view.findViewById(R.id.cheeseImage)
+        val likeBtn: ImageButton = view.findViewById(R.id.likeButton)
     }
 
 
