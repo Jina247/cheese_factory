@@ -1,6 +1,5 @@
 package com.example.cheesefactory
 
-import android.adservices.ondevicepersonalization.MutableKeyValueStore
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,7 +16,7 @@ class CheeseViewModel: ViewModel() {
         val cheeses: MutableList<CheeseData> = mutableListOf()
         for (i in cheeseName.indices) {
             cheeses.add(CheeseData(cheeseImage[i], cheeseName[i],
-                cheeseShortDesc[i], cheeseDetailDesc[i]))
+                cheeseShortDesc[i], false))
         }
         _cheeseList.value = cheeses
         _favouriteCheeseList.value = mutableListOf()
@@ -25,6 +24,7 @@ class CheeseViewModel: ViewModel() {
 
     fun addToFavourites(cheese: CheeseData, currentFavs: MutableList<CheeseData>) {
         if (!(currentFavs.contains(cheese))) {
+            cheese.isLiked = true
             currentFavs.add(cheese)
             _favouriteCheeseList.value = currentFavs
         }
@@ -32,7 +32,15 @@ class CheeseViewModel: ViewModel() {
 
     fun removeFromFavourites(cheese: CheeseData, currentFavs: MutableList<CheeseData>) {
         currentFavs.remove(cheese)
+        cheese.isLiked = false
         _favouriteCheeseList.value = currentFavs
+    }
 
+    fun doLike(cheese: CheeseData, currentFavs: MutableList<CheeseData>) {
+        if (cheese.isLiked) {
+            removeFromFavourites(cheese, currentFavs)
+        } else {
+            addToFavourites(cheese, currentFavs)
+        }
     }
 }
