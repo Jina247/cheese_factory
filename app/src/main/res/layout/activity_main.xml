@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/cream">
 
     <!-- Header -->
     <TextView
@@ -94,7 +95,8 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@drawable/filter"
-                app:tint="@color/timber" />
+                app:tint="@color/timber"
+                android:alpha="0.7"/>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 

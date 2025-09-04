@@ -48,27 +48,268 @@
         <item>French blue cheese, tangy and bold.</item>
     </string-array>
 
+    <string-array name="cheese_origins">
+        <item>Seine-et-Marne, France</item>
+        <item>Puglia, Italy</item>
+        <item>Asturias, Spain</item>
+        <item>Normandy, France</item>
+        <item>Somerset, England</item>
+        <item>Loire Valley, France</item>
+        <item>Wisconsin, USA</item>
+        <item>Various regions</item>
+        <item>Emmental Valley, Switzerland</item>
+        <item>Catalonia, Spain</item>
+        <item>Netherlands</item>
+        <item>Gruyères, Switzerland</item>
+        <item>Denmark</item>
+        <item>La Mancha, Spain</item>
+        <item>Lombardy, Italy</item>
+        <item>Southern Italy</item>
+        <item>Campania, Italy</item>
+        <item>Parma, Italy</item>
+        <item>Lazio, Italy</item>
+        <item>Roquefort-sur-Soulzon, France</item>
+    </string-array>
+
+    <!-- Milk Source -->
+    <string-array name="cheese_milk_source">
+        <item>Cow\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Mixed Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Goat\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Goat\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Sheep\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Buffalo\'s Milk</item>
+        <item>Cow\'s Milk</item>
+        <item>Sheep\'s Milk</item>
+        <item>Sheep\'s Milk</item>
+    </string-array>
+
+    <!-- Texture -->
+    <string-array name="cheese_texture">
+        <item>Soft</item>
+        <item>Soft</item>
+        <item>Semi-soft</item>
+        <item>Soft</item>
+        <item>Hard</item>
+        <item>Soft</item>
+        <item>Semi-hard</item>
+        <item>Spreadable</item>
+        <item>Hard</item>
+        <item>Semi-hard</item>
+        <item>Semi-hard</item>
+        <item>Hard</item>
+        <item>Semi-soft</item>
+        <item>Hard</item>
+        <item>Spreadable</item>
+        <item>Soft</item>
+        <item>Soft</item>
+        <item>Hard</item>
+        <item>Hard</item>
+        <item>Crumbly</item>
+    </string-array>
+
+    <!-- Aging -->
+    <string-array name="cheese_aging">
+        <item>Young (2-8 weeks)</item>
+        <item>Fresh (0-2 weeks)</item>
+        <item>Matured (2-6 months)</item>
+        <item>Young (2-8 weeks)</item>
+        <item>Aged (6 months-1 year)</item>
+        <item>Fresh (0-2 weeks)</item>
+        <item>Young (2-8 weeks)</item>
+        <item>Fresh (0-2 weeks)</item>
+        <item>Matured (2-6 months)</item>
+        <item>Young (2-8 weeks)</item>
+        <item>Matured (2-6 months)</item>
+        <item>Aged (6 months-1 year)</item>
+        <item>Young (2-8 weeks)</item>
+        <item>Aged (6 months-1 year)</item>
+        <item>Fresh (0-2 weeks)</item>
+        <item>Fresh (0-2 weeks)</item>
+        <item>Fresh (0-2 weeks)</item>
+        <item>Extra Aged (1+ years)</item>
+        <item>Aged (6 months-1 year)</item>
+        <item>Matured (2-6 months)</item>
+    </string-array>
+
+    <!-- Flavor -->
+    <string-array name="cheese_flavor">
+        <item>Buttery</item>
+        <item>Mild</item>
+        <item>Pungent</item>
+        <item>Buttery</item>
+        <item>Sharp</item>
+        <item>Tangy</item>
+        <item>Mild</item>
+        <item>Mild</item>
+        <item>Nutty</item>
+        <item>Tangy</item>
+        <item>Nutty</item>
+        <item>Nutty</item>
+        <item>Buttery</item>
+        <item>Nutty</item>
+        <item>Sweet</item>
+        <item>Mild</item>
+        <item>Mild</item>
+        <item>Sharp</item>
+        <item>Sharp</item>
+        <item>Pungent</item>
+    </string-array>
+
+    <!-- Main Categories -->
+    <string-array name="cheese_main_categories">
+        <item>Soft Cheese</item>
+        <item>Fresh Cheese</item>
+        <item>Blue Cheese</item>
+        <item>Soft Cheese</item>
+        <item>Hard Cheese</item>
+        <item>Soft Cheese</item>
+        <item>Semi-Hard Cheese</item>
+        <item>Fresh Cheese</item>
+        <item>Hard Cheese</item>
+        <item>Semi-Hard Cheese</item>
+        <item>Semi-Hard Cheese</item>
+        <item>Hard Cheese</item>
+        <item>Semi-Hard Cheese</item>
+        <item>Hard Cheese</item>
+        <item>Fresh Cheese</item>
+        <item>Fresh Cheese</item>
+        <item>Fresh Cheese</item>
+        <item>Hard Cheese</item>
+        <item>Hard Cheese</item>
+        <item>Blue Cheese</item>
+    </string-array>
+
     <!-- Detailed Descriptions -->
-    <string-array name="cheese_detail_desc">
-        <item>Brie is a French cheese with a soft rind and creamy interior. It has a buttery, mild flavor that becomes earthier with age. Often baked or paired with fruits, crackers, and wine, Brie is a classic for cheese boards and party platters.</item>
-        <item>Burrata is an Italian cheese made from mozzarella and cream. The outer shell is solid mozzarella, while the inside contains stracciatella and cream, giving it a rich, soft texture. It’s perfect on fresh salads, paired with tomatoes, or spread over toasted bread.</item>
-        <item>Cabrales is a strong Spanish blue cheese traditionally aged in caves. It’s tangy, salty, and pungent, making it a bold choice for cheese lovers. It’s often crumbled over salads, melted into sauces, or served with honey and bread.</item>
-        <item>Camembert is a soft, creamy cheese from France, similar to Brie but with a deeper earthy flavor. It pairs beautifully with baguettes, fruits, and light wines. It’s also delicious baked whole until gooey and spreadable.</item>
-        <item>Cheddar is a hard English cheese that ranges from mild to extra sharp depending on its age. It melts beautifully, making it perfect for sandwiches, mac and cheese, and burgers. A true all-rounder in the cheese world.</item>
-        <item>Chèvre is French goat cheese, ranging from fresh and creamy to firm and aged. It has a tangy, slightly earthy flavor. It’s often crumbled on salads, spread on bread, or baked into savory tarts.</item>
-        <item>Colby is an American cheese similar to cheddar but softer and milder. It’s often used in sandwiches, burgers, and mac and cheese. It’s a family favorite for its approachable taste.</item>
-        <item>Cottage cheese is a fresh cheese curd product with a mild flavor. Its soft, lumpy texture makes it versatile for both sweet and savory dishes. It’s popular in healthy meals, fruit bowls, and as a protein-rich snack.</item>
-        <item>Emmental is a Swiss cheese known for its iconic holes. It has a mild, nutty flavor and melts smoothly, making it perfect for fondues, grilled cheese sandwiches, and casseroles.</item>
-        <item>Garrotxa is a semi-firm goat cheese from Catalonia, Spain. It has a gray rind and a mild, nutty flavor with herbal notes. It pairs well with nuts, fruit, and crisp white wines.</item>
-        <item>Gouda is a Dutch cheese with a smooth texture and sweet, caramel-like flavor. Younger Goudas are mild, while aged ones become firmer and sharper. It’s excellent for snacking, sandwiches, or melting into dishes.</item>
-        <item>Gruyère is a Swiss cheese with a firm, dense texture and a nutty flavor. It melts beautifully, which makes it the classic choice for fondue, French onion soup, and gratins.</item>
-        <item>Havarti is a semi-soft Danish cheese with a buttery texture and mild, slightly tangy flavor. It’s perfect for sandwiches, grilled cheese, or sliced on crackers with fruit.</item>
-        <item>Manchego is a Spanish cheese made from sheep’s milk. It’s firm and buttery with a nutty, slightly tangy flavor. It’s often enjoyed with quince paste, olives, and cured meats.</item>
-        <item>Mascarpone is a rich, creamy Italian cheese with a sweet flavor. It’s best known as the base for tiramisu but also works well in cheesecakes, frostings, and savory pasta sauces.</item>
-        <item>Mozzarella is a fresh Italian cheese with a mild flavor and stretchy texture. It’s the ultimate pizza topping, also great in caprese salads, sandwiches, and pasta bakes.</item>
-        <item>Mozzarella di Bufala is made from water buffalo milk, giving it a creamier and tangier taste than regular mozzarella. It’s prized for caprese salads, gourmet pizzas, and fresh Italian dishes.</item>
-        <item>Parmesan, or Parmigiano-Reggiano, is a hard Italian cheese with a salty, nutty flavor. It’s commonly grated over pasta, risotto, soups, and salads. Aged varieties have deep, complex flavors perfect for snacking too.</item>
-        <item>Pecorino Romano is a hard Italian cheese made from sheep’s milk. It’s sharper and saltier than Parmesan, ideal for grating over pasta dishes like carbonara and amatriciana.</item>
-        <item>Roquefort is a French blue cheese made from sheep’s milk. It has a bold, tangy, and salty flavor with blue veins throughout. It’s delicious in salads, sauces, or spread on rustic bread.</item>
+    <string-array name="cheese_descriptions">
+        <item>Brie is a soft French cheese with a creamy texture and rich, buttery flavor. Its white, bloomy rind is completely edible and adds an earthy, mushroom-like taste. The interior becomes increasingly creamy as it ripens, making it perfect for spreading on crusty bread or crackers.</item>
+        <item>Burrata is a fresh Italian cheese made from mozzarella and cream. The outer shell is solid mozzarella, while the inside contains stracciatella and cream, giving it a unique, creamy texture. Best enjoyed fresh at room temperature.</item>
+        <item>Cabrales is a Spanish blue cheese made from mixed milk (cow, goat, and sheep). It has a strong, pungent flavor with a creamy yet crumbly texture. Aged in natural caves, it develops distinctive blue-green veining throughout.</item>
+        <item>Camembert is a soft-ripened French cheese with a white, bloomy rind. Similar to Brie but with a more intense flavor, it has a creamy texture that becomes runny when fully ripe. Perfect for baking or enjoying with wine.</item>
+        <item>Cheddar is a hard English cheese that ranges from mild to extra sharp. It has a firm texture and develops a more complex, tangy flavor as it ages. One of the world\'s most popular cheeses, excellent for cooking or eating on its own.</item>
+        <item>Chevre is a French goat cheese with a distinctive tangy flavor and smooth, creamy texture. Often served fresh, it can be spread on bread or used in salads. Some varieties are aged to develop a firmer texture and more complex taste.</item>
+        <item>Colby is an American cheese similar to cheddar but with a milder flavor and more open texture. It\'s semi-hard with a slightly sweet taste, making it popular for sandwiches and snacking.</item>
+        <item>Cottage cheese is a fresh cheese curd product with a mild flavor and lumpy texture. It\'s low in fat and high in protein, making it popular for healthy eating. Often eaten plain or used in cooking and baking.</item>
+        <item>Emmental is a Swiss cheese famous for its holes (called eyes). It has a nutty, slightly sweet flavor and firm texture. Excellent for melting, it\'s commonly used in fondue and French onion soup.</item>
+        <item>Garrotxa is a Spanish goat cheese with a distinctive grayish rind. It has a creamy texture with a subtle, earthy flavor that becomes more complex with age. The rind is edible and adds to the cheese\'s unique character.</item>
+        <item>Gouda is a Dutch cheese with a rich, nutty flavor that intensifies with age. Young Gouda is mild and creamy, while aged varieties become hard and develop caramel notes. Excellent for both cooking and eating.</item>
+        <item>Gruyère is a Swiss cheese with a complex, nutty flavor and smooth texture. Essential for fondue and French onion soup, it melts beautifully and has a distinctive taste that pairs well with white wines.</item>
+        <item>Havarti is a Danish cheese with a buttery, slightly tangy flavor and creamy texture. It\'s semi-soft and melts well, making it perfect for sandwiches, cooking, or enjoying with crackers.</item>
+        <item>Manchego is a Spanish sheep\'s milk cheese with a distinctive zigzag pattern on its rind. It has a firm texture and nutty, slightly salty flavor. Often served with membrillo (quince paste) in Spanish cuisine.</item>
+        <item>Mascarpone is an Italian cream cheese with a rich, sweet flavor and smooth, spreadable texture. Essential for tiramisu, it\'s also used in both sweet and savory dishes as a luxurious ingredient.</item>
+        <item>Mozzarella is a fresh Italian cheese with a mild flavor and characteristic stretchy texture. Perfect for pizza and caprese salad, it\'s best enjoyed fresh and is known for its excellent melting properties.</item>
+        <item>Mozzarella di Bufala is the premium version made from water buffalo milk. It has a more complex flavor and creamier texture than regular mozzarella, with a slightly tangy finish that makes it prized by food enthusiasts.</item>
+        <item>Parmesan (Parmigiano-Reggiano) is the king of Italian cheeses. Hard and granular with a sharp, complex flavor, it\'s aged for at least 12 months. Essential for pasta dishes and excellent for grating over various foods.</item>
+        <item>Pecorino Romano is a hard Italian sheep\'s milk cheese with a sharp, salty flavor. Often used grated over pasta, it has a granular texture and distinctive taste that\'s more intense than Parmesan.</item>
+        <item>Roquefort is a French blue cheese made exclusively from sheep\'s milk. It has a tangy, sharp flavor with a creamy, crumbly texture. Aged in natural caves, it develops characteristic blue veining and a distinctive taste.</item>
+    </string-array>
+
+    <!-- Wine Pairings -->
+    <string-array name="wine_pairings">
+        <item>Champagne, Chardonnay, Pinot Noir</item>
+        <item>Prosecco, Pinot Grigio, light reds</item>
+        <item>Port, Sauternes, robust reds</item>
+        <item>Champagne, Burgundy, light reds</item>
+        <item>Cabernet Sauvignon, Merlot, Chardonnay</item>
+        <item>Sauvignon Blanc, Sancerre, Rosé</item>
+        <item>Riesling, Pinot Grigio, light beers</item>
+        <item>White wines, fruit wines</item>
+        <item>Riesling, Gewürztraminer, light whites</item>
+        <item>Tempranillo, Garnacha, dry whites</item>
+        <item>Merlot, Cabernet Sauvignon, Riesling</item>
+        <item>Chardonnay, Pinot Noir, Riesling</item>
+        <item>Chardonnay, Pinot Grigio, light reds</item>
+        <item>Tempranillo, Rioja, Sherry</item>
+        <item>Prosecco, Moscato, sweet wines</item>
+        <item>Chianti, Pinot Grigio, Sangiovese</item>
+        <item>Chianti Classico, Barolo, Prosecco</item>
+        <item>Chianti, Barolo, Brunello di Montalcino</item>
+        <item>Chianti, Montepulciano, bold reds</item>
+        <item>Sauternes, Port, Bordeaux</item>
+    </string-array>
+
+    <!-- Food Pairings -->
+    <string-array name="food_pairings">
+        <item>Baguette, fresh berries, walnuts, honey</item>
+        <item>Tomatoes, basil, prosciutto, arugula</item>
+        <item>Walnuts, honey, figs, rustic bread</item>
+        <item>Apples, cranberries, baguette, almonds</item>
+        <item>Apples, crackers, bacon, pickles</item>
+        <item>Crackers, herbs, honey, dried fruits</item>
+        <item>Crackers, apples, deli meats</item>
+        <item>Fresh fruits, vegetables, herbs</item>
+        <item>Pickles, mustard, rye bread, ham</item>
+        <item>Almonds, honey, crusty bread</item>
+        <item>Mustard, pickles, smoked meats, apples</item>
+        <item>Caramelized onions, mushrooms, crusty bread</item>
+        <item>Crackers, grapes, dill, salmon</item>
+        <item>Membrillo, marcona almonds, olives</item>
+        <item>Berries, ladyfingers, coffee, chocolate</item>
+        <item>Tomatoes, basil, olive oil, bread</item>
+        <item>Heirloom tomatoes, basil, olive oil</item>
+        <item>Pasta, risotto, aged balsamic, pears</item>
+        <item>Pasta, black pepper, arugula</item>
+        <item>Pears, walnuts, honey, crusty bread</item>
+    </string-array>
+
+    <!-- Filter Categories -->
+
+    <!-- Milk Source Categories -->
+    <string-array name="milk_source_categories">
+        <item>Cow\'s Milk</item>
+        <item>Goat\'s Milk</item>
+        <item>Sheep\'s Milk</item>
+        <item>Buffalo\'s Milk</item>
+        <item>Mixed Milk</item>
+    </string-array>
+
+    <!-- Texture Categories -->
+    <string-array name="texture_categories">
+        <item>Soft</item>
+        <item>Semi-soft</item>
+        <item>Semi-hard</item>
+        <item>Hard</item>
+        <item>Crumbly</item>
+        <item>Spreadable</item>
+    </string-array>
+
+    <!-- Aging Categories -->
+    <string-array name="aging_categories">
+        <item>Fresh (0–2 weeks)</item>
+        <item>Young (2–8 weeks)</item>
+        <item>Matured (2–6 months)</item>
+        <item>Aged (6 months–1 year)</item>
+        <item>Extra Aged (1+ years)</item>
+    </string-array>
+
+    <!-- Flavor Categories -->
+    <string-array name="flavor_categories">
+        <item>Mild</item>
+        <item>Buttery</item>
+        <item>Nutty</item>
+        <item>Tangy</item>
+        <item>Sharp</item>
+        <item>Pungent</item>
+        <item>Sweet</item>
+    </string-array>
+
+    <!-- Main Category Groups -->
+    <string-array name="main_category_groups">
+        <item>Soft Cheese</item>
+        <item>Semi-Hard Cheese</item>
+        <item>Hard Cheese</item>
+        <item>Fresh Cheese</item>
+        <item>Blue Cheese</item>
     </string-array>
 </resources>
