@@ -229,20 +229,6 @@
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- Catalog Frame -->
-        <FrameLayout
-            android:id="@+id/catalogFrame"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible"/>
-
-        <!-- Favourite Frame -->
-        <FrameLayout
-            android:id="@+id/favouriteFrame"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"/>
     </FrameLayout>
 
     <!-- Footer -->
@@ -258,7 +244,6 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:id="@+id/catalogBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -269,6 +254,7 @@
             android:background="?android:attr/selectableItemBackground">
 
             <ImageButton
+                android:id="@+id/catalogBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/catalog"
@@ -277,6 +263,7 @@
                 app:tint="@color/timber"/>
 
             <TextView
+                android:id="@+id/catalogTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/catalog"
@@ -287,7 +274,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/favouriteBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -298,6 +284,7 @@
             android:background="?android:attr/selectableItemBackground">
 
             <ImageButton
+                android:id="@+id/favouriteBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/favourite"
@@ -306,6 +293,7 @@
                 app:tint="@android:color/darker_gray" />
 
             <TextView
+                android:id="@+id/favoriteTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/favourite"

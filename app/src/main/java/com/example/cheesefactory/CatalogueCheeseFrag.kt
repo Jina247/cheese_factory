@@ -73,6 +73,5 @@ class CatalogueCheeseFrag : Fragment() {
             }
             recyclerView.adapter = cheeseAdapter
         }
-
     }
 }

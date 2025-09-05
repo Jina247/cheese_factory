@@ -42,5 +42,6 @@ class CheeseViewModel: ViewModel() {
             addToFavourites(cheese, currentFavs)
         }
         _cheeseList.value = _cheeseList.value
+        _favouriteCheeseList.value = _favouriteCheeseList.value
     }
 }
