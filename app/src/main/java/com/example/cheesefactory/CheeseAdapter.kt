@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 class CheeseAdapter(
     private val cheese: List<CheeseData>,
     private val context: Context,
-    private val onLikeClick: (CheeseData) -> Unit
+    private val onLikeClick: (CheeseData) -> Unit,
+    private val onItemClick: (CheeseData) -> Unit
 ): RecyclerView.Adapter<CheeseAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -41,6 +43,10 @@ class CheeseAdapter(
         holder.likeBtn.setOnClickListener {
             onLikeClick(cheeseItem)
         }
+        holder.selectedCheese.setOnClickListener {
+            onItemClick(cheeseItem)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -52,6 +58,7 @@ class CheeseAdapter(
         val shortDes: TextView = view.findViewById(R.id.cheeseDescription)
         val cheeseImg: ImageView = view.findViewById(R.id.cheeseImage)
         val likeBtn: ImageButton = view.findViewById(R.id.likeButton)
+        val selectedCheese: CardView = view.findViewById(R.id.cheeseCard)
     }
 
 

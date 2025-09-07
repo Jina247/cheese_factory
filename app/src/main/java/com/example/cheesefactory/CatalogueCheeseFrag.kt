@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class CatalogueCheeseFrag : Fragment() {
-    val cheeseImg = arrayOf(
+    private val cheeseImg = arrayOf(
         R.drawable.brie,
         R.drawable.burrata,
         R.drawable.cabrales,
@@ -28,13 +28,16 @@ class CatalogueCheeseFrag : Fragment() {
         R.drawable.havarti,
         R.drawable.manchego,
         R.drawable.mascarpone,
-        R.drawable.mozzarella,
         R.drawable.mozzarella_di_bufala,
+        R.drawable.mozzarella,
         R.drawable.parmesan,
         R.drawable.pecorino_romano,
         R.drawable.roquefort
     )
-    private lateinit var viewModel: CheeseViewModel
+    private val viewModel: CheeseViewModel by lazy {
+        ViewModelProvider(requireActivity())[CheeseViewModel::class.java]
+    }
+
     private lateinit var cheeseAdapter: CheeseAdapter
 
     override fun onCreateView(
@@ -47,31 +50,64 @@ class CatalogueCheeseFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity())[CheeseViewModel::class.java]
         val cheeseName = resources.getStringArray(R.array.cheese_names)
         val cheeseShortDesc = resources.getStringArray(R.array.cheese_short_desc)
-        viewModel.setUpCheese(cheeseImg, cheeseName, cheeseShortDesc)
+        val cheeseLongDesc = resources.getStringArray(R.array.cheese_descriptions)
+        val cheeseOrigin = resources.getStringArray(R.array.cheese_origins)
+        val cheeseMilkSource = resources.getStringArray(R.array.cheese_milk_source)
+        val cheeseTexture = resources.getStringArray(R.array.cheese_texture)
+        val cheeseAge = resources.getStringArray(R.array.cheese_aging)
+        val cheeseFlavour = resources.getStringArray(R.array.cheese_flavor)
+        val cheeseFoodPairing = resources.getStringArray(R.array.food_pairings)
+        val cheeseWinePairing = resources.getStringArray(R.array.wine_pairings)
+        if (viewModel.cheeseList.value.isNullOrEmpty()) {
+            viewModel.setUpCheese(
+                cheeseImg,
+                cheeseName,
+                cheeseShortDesc,
+                cheeseLongDesc,
+                cheeseOrigin,
+                cheeseMilkSource,
+                cheeseTexture,
+                cheeseAge,
+                cheeseFlavour,
+                cheeseFoodPairing,
+                cheeseWinePairing
+            )
+        }
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerCheeseCatalogView)
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
+
         viewModel.cheeseList.observe(viewLifecycleOwner) { cheeseData ->
             cheeseAdapter = CheeseAdapter(
                 cheeseData,
-                requireContext()
-            ) { clickedCheese ->
-                val message = if (clickedCheese.isLiked) {
-                    "${clickedCheese.name} removed from favorites"
-                } else {
-                    "${clickedCheese.name} added to favorites!"
+                requireContext(),
+                onLikeClick = { clickedCheese ->
+                    val message = if (clickedCheese.isLiked) {
+                        "${clickedCheese.name} removed from favorites"
+                    } else {
+                        "${clickedCheese.name} added to favorites!"
+                    }
+                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                    val currentFavs = viewModel.favouriteCheeseList.value ?: mutableListOf()
+                    viewModel.doLike(clickedCheese, currentFavs)
+                },
+                onItemClick = { clickedCheese ->
+                    // Save clicked cheese in ViewModel
+                    viewModel.selectCheese(clickedCheese)
+
+                    parentFragmentManager.beginTransaction()
+                        .hide(parentFragmentManager.findFragmentByTag("CATALOGUE")!!)
+                        .add(R.id.mainContent, DetailCheese(), "DETAIL")
+                        .addToBackStack("DETAIL")
+                        .commit()
+
                 }
-
-                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-
-                val currentFavs = viewModel.favouriteCheeseList.value ?: mutableListOf()
-                viewModel.doLike(clickedCheese, currentFavs)
-            }
+            )
             recyclerView.adapter = cheeseAdapter
         }
+
     }
 }
