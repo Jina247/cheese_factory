@@ -30,12 +30,13 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="16dp"
+            android:padding="12dp"
             android:background="@android:color/transparent"
             android:contentDescription="Add to favorites"
-            android:src="@drawable/outline_bookmark_heart_24"
+            android:src="@drawable/like"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/timber" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <!-- Cheese Image -->
         <com.google.android.material.card.MaterialCardView

@@ -10,6 +10,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+    private val catalogueCheeseFrag: CatalogueCheeseFrag =  CatalogueCheeseFrag()
+    private val favouriteCheeseFrag: FavouriteCheeseFrag = FavouriteCheeseFrag()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -19,13 +22,17 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val catalogueFragment = CatalogueCheeseFrag()
-        val favouriteFragment = FavouriteCheeseFrag()
 
         // Show catalogue fragment initially
         supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContent, catalogueFragment)
+            .add(R.id.mainContent, catalogueCheeseFrag, "CATALOGUE")
             .commit()
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.mainContent, favouriteCheeseFrag, "FAVOURITE")
+            .hide(favouriteCheeseFrag)
+            .commit()
+
 
         val favBtn: ImageButton = findViewById(R.id.favouriteBtn)
         val favTv: TextView = findViewById(R.id.favoriteTxt)
@@ -39,7 +46,8 @@ class MainActivity : AppCompatActivity() {
             catalogueTv.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
 
             supportFragmentManager.beginTransaction()
-                .replace(R.id.mainContent, favouriteFragment)
+                .hide(catalogueCheeseFrag)
+                .show(favouriteCheeseFrag)
                 .commit()
         }
 
@@ -50,8 +58,10 @@ class MainActivity : AppCompatActivity() {
             favTv.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
 
             supportFragmentManager.beginTransaction()
-                .replace(R.id.mainContent, catalogueFragment)
+                .hide(favouriteCheeseFrag)
+                .show(catalogueCheeseFrag)
                 .commit()
         }
+
     }
 }
