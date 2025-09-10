@@ -8,15 +8,20 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 
 class CheeseAdapter(
-    private val cheese: List<CheeseData>,
+    private var cheese: List<CheeseData>,
     private val context: Context,
     private val onLikeClick: (CheeseData) -> Unit,
     private val onItemClick: (CheeseData) -> Unit
 ): RecyclerView.Adapter<CheeseAdapter.ViewHolder>() {
 
+    fun updateList(cList: List<CheeseData>) {
+        this.cheese = cList
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -40,9 +45,11 @@ class CheeseAdapter(
         } else {
             holder.likeBtn.setImageResource(R.drawable.liked)
         }
+
         holder.likeBtn.setOnClickListener {
             onLikeClick(cheeseItem)
         }
+
         holder.selectedCheese.setOnClickListener {
             onItemClick(cheeseItem)
         }

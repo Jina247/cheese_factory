@@ -10,8 +10,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
-    private val catalogueCheeseFrag: CatalogueCheeseFrag =  CatalogueCheeseFrag()
-    private val favouriteCheeseFrag: FavouriteCheeseFrag = FavouriteCheeseFrag()
+    private lateinit var catalogueCheeseFrag: CatalogueCheeseFrag
+    private lateinit var favouriteCheeseFrag: FavouriteCheeseFrag
+    private var currentTab = "CATALOGUE"
+    private lateinit var catalogueBtn: ImageButton
+    private lateinit var favouriteBtn: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,46 +25,67 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        // Show catalogue fragment initially
+        createFragments()
+        navigateButton()
+    }
+    private fun createFragments() {
+        catalogueCheeseFrag = CatalogueCheeseFrag()
+        favouriteCheeseFrag = FavouriteCheeseFrag()
+        // Add both fragments in one transaction
         supportFragmentManager.beginTransaction()
             .add(R.id.mainContent, catalogueCheeseFrag, "CATALOGUE")
-            .commit()
-
-        supportFragmentManager.beginTransaction()
             .add(R.id.mainContent, favouriteCheeseFrag, "FAVOURITE")
             .hide(favouriteCheeseFrag)
             .commit()
+    }
 
-
-        val favBtn: ImageButton = findViewById(R.id.favouriteBtn)
-        val favTv: TextView = findViewById(R.id.favoriteTxt)
-        val catalogueBtn: ImageButton = findViewById(R.id.catalogBtn)
-        val catalogueTv: TextView = findViewById(R.id.catalogTxt)
-
-        favBtn.setOnClickListener {
-            favBtn.setColorFilter(ContextCompat.getColor(this, R.color.timber))
-            favTv.setTextColor(ContextCompat.getColor(this, R.color.timber))
-            catalogueBtn.setColorFilter(ContextCompat.getColor(this, android.R.color.darker_gray))
-            catalogueTv.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
-
-            supportFragmentManager.beginTransaction()
-                .hide(catalogueCheeseFrag)
-                .show(favouriteCheeseFrag)
-                .commit()
+    private fun switchTab(tabName: String) {
+        if (currentTab == tabName) return
+        when (tabName) {
+            "CATALOGUE" ->
+                supportFragmentManager.beginTransaction()
+                    .show(catalogueCheeseFrag)
+                    .hide(favouriteCheeseFrag)
+                    .commit()
+            "FAVOURITE" ->
+                supportFragmentManager.beginTransaction()
+                    .show(favouriteCheeseFrag)
+                    .hide(catalogueCheeseFrag)
+                    .commit()
         }
-
+        currentTab = tabName
+        updateTabColors()
+    }
+    private fun navigateButton() {
+        catalogueBtn = findViewById(R.id.catalogBtn)
+        favouriteBtn = findViewById(R.id.favouriteBtn)
         catalogueBtn.setOnClickListener {
-            catalogueBtn.setColorFilter(ContextCompat.getColor(this, R.color.timber))
-            catalogueTv.setTextColor(ContextCompat.getColor(this, R.color.timber))
-            favBtn.setColorFilter(ContextCompat.getColor(this, android.R.color.darker_gray))
-            favTv.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
-
-            supportFragmentManager.beginTransaction()
-                .hide(favouriteCheeseFrag)
-                .show(catalogueCheeseFrag)
-                .commit()
+            switchTab("CATALOGUE")
         }
+        favouriteBtn.setOnClickListener {
+            switchTab("FAVOURITE")
+        }
+    }
 
+    private fun updateTabColors() {
+        catalogueBtn = findViewById(R.id.catalogBtn)
+        favouriteBtn = findViewById(R.id.favouriteBtn)
+        val catalogueTxt = findViewById<TextView>(R.id.catalogTxt)
+        val favouriteTxt = findViewById<TextView>(R.id.favoriteTxt)
+
+        val activeColor = ContextCompat.getColor(this, R.color.timber)
+        val inactiveColor = ContextCompat.getColor(this, android.R.color.darker_gray)
+
+        if (currentTab == "CATALOGUE") {
+            catalogueBtn.setColorFilter(activeColor)
+            catalogueTxt.setTextColor(activeColor)
+            favouriteBtn.setColorFilter(inactiveColor)
+            favouriteTxt.setTextColor(inactiveColor)
+        } else {
+            favouriteBtn.setColorFilter(activeColor)
+            favouriteTxt.setTextColor(activeColor)
+            catalogueBtn.setColorFilter(inactiveColor)
+            catalogueTxt.setTextColor(inactiveColor)
+        }
     }
 }

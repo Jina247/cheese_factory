@@ -40,6 +40,8 @@ class DetailCheese : Fragment() {
         val desc: TextView = view.findViewById(R.id.cheeseDescription)
         val foodPair: TextView = view.findViewById(R.id.foodPairing)
         val winePair: TextView = view.findViewById(R.id.wineParning)
+        val favButton: ImageButton = view.findViewById(R.id.favouriteBtn)
+        val catalogueBtn: ImageButton = view.findViewById(R.id.catalogBtn)
 
         viewModel.selectedCheese.observe(viewLifecycleOwner) { cheeseData ->
             cheeseData?.let { cheese ->
@@ -61,7 +63,6 @@ class DetailCheese : Fragment() {
                     parentFragmentManager.popBackStack()
                 }
 
-                // Handle like button - FIXED LOGIC
                 likeBtn.setOnClickListener {
                     val currentFavs = viewModel.favouriteCheeseList.value ?: mutableListOf()
                     viewModel.doLike(cheese, currentFavs)
@@ -74,8 +75,11 @@ class DetailCheese : Fragment() {
                     }
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
-                    // Update button appearance
                     updateLikeButton(likeBtn, cheese.isLiked)
+                }
+
+                catalogueBtn.setOnClickListener {
+                    parentFragmentManager.findFragmentByTag("CATALOGUE")
                 }
             }
         }
@@ -87,5 +91,9 @@ class DetailCheese : Fragment() {
         } else {
             button.setImageResource(R.drawable.like)
         }
+    }
+
+    private fun favButton() {
+
     }
 }
