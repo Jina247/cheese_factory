@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -114,21 +116,29 @@ class CatalogueCheeseFrag : Fragment() {
 
         milkTitle.setOnClickListener {
             toggleButton(milkChipGroup)
+            val img: ImageView = view.findViewById(R.id.mImg)
+            btnImgChange(img, milkChipGroup.isGone)
             setUpMilkChips(milkChipGroup)
         }
 
         flavourTitle.setOnClickListener {
             toggleButton(flavourChipGroup)
+            val img: ImageView = view.findViewById(R.id.fImg)
+            btnImgChange(img, flavourChipGroup.isGone)
             setUpFlavourChips(flavourChipGroup)
         }
 
         textureTitle.setOnClickListener {
             toggleButton(textureChipGroup)
+            val img: ImageView = view.findViewById(R.id.tImg)
+            btnImgChange(img, textureChipGroup.isGone)
             setUpTextureChips(textureChipGroup)
         }
 
         ageTitle.setOnClickListener {
             toggleButton(ageChipGroup)
+            val img: ImageView = view.findViewById(R.id.aImg)
+            btnImgChange(img, ageChipGroup.isGone)
             setUpAgedChips(ageChipGroup)
         }
 
@@ -214,6 +224,16 @@ class CatalogueCheeseFrag : Fragment() {
         view.isGone = !view.isGone
     }
 
+    fun btnImgChange(img: ImageView, isOn: Boolean) {
+        if (!isOn) {
+            img.setImageResource(R.drawable.rounded_keyboard_arrow_down_24)
+        } else {
+            img.setImageResource(R.drawable.rounded_arrow_forward_ios_24)
+        }
+        img.setColorFilter(ContextCompat.getColor(requireContext(), R.color.terracotta))
+
+    }
+
     fun setUpMilkChips(chipGroup: ChipGroup) {
         val cow: Chip = chipGroup.findViewById(R.id.cow)
         val buffalo: Chip = chipGroup.findViewById(R.id.buffalo)
@@ -221,23 +241,23 @@ class CatalogueCheeseFrag : Fragment() {
         val goat: Chip = chipGroup.findViewById(R.id.goat)
         val mixed: Chip = chipGroup.findViewById(R.id.mixed)
 
-        cow.setOnCheckedChangeListener { _, isChecked ->
+        cow.setOnCheckedChangeListener { it, isChecked ->
             tempMilk.setUpHelper("Cow\'s Milk", isChecked)
         }
 
-        buffalo.setOnCheckedChangeListener { _, isChecked ->
+        buffalo.setOnCheckedChangeListener { it, isChecked ->
             tempMilk.setUpHelper("Buffalo\'s Milk", isChecked)
         }
 
-        sheep.setOnCheckedChangeListener { _, isChecked ->
+        sheep.setOnCheckedChangeListener { it, isChecked ->
             tempMilk.setUpHelper("Sheep\'s Milk", isChecked)
         }
 
-        goat.setOnCheckedChangeListener { _, isChecked ->
+        goat.setOnCheckedChangeListener { it, isChecked ->
             tempMilk.setUpHelper("Goat\'s Milk", isChecked)
         }
 
-        mixed.setOnCheckedChangeListener { _, isChecked ->
+        mixed.setOnCheckedChangeListener { it, isChecked ->
             tempMilk.setUpHelper("Mixed Milk", isChecked)
         }
     }
@@ -250,27 +270,27 @@ class CatalogueCheeseFrag : Fragment() {
         val crumbly: Chip = chipGroup.findViewById(R.id.crumbly)
         val spreadable: Chip = chipGroup.findViewById(R.id.spread)
 
-        soft.setOnCheckedChangeListener { _, isChecked ->
+        soft.setOnCheckedChangeListener { it, isChecked ->
             tempTexture.setUpHelper("Soft", isChecked)
         }
 
-        s_soft.setOnCheckedChangeListener { _, isChecked ->
+        s_soft.setOnCheckedChangeListener { it, isChecked ->
             tempTexture.setUpHelper("Semi-soft", isChecked)
         }
 
-        s_hard.setOnCheckedChangeListener { _, isChecked ->
+        s_hard.setOnCheckedChangeListener { it, isChecked ->
             tempTexture.setUpHelper("Semi-hard", isChecked)
         }
 
-        hard.setOnCheckedChangeListener { _, isChecked ->
+        hard.setOnCheckedChangeListener { it, isChecked ->
             tempTexture.setUpHelper("Hard", isChecked)
         }
 
-        crumbly.setOnCheckedChangeListener { _, isChecked ->
+        crumbly.setOnCheckedChangeListener { it, isChecked ->
             tempTexture.setUpHelper("Crumbly", isChecked)
         }
 
-        spreadable.setOnCheckedChangeListener { _, isChecked ->
+        spreadable.setOnCheckedChangeListener { it, isChecked ->
             tempTexture.setUpHelper("Spreadable", isChecked)
         }
     }
@@ -284,30 +304,30 @@ class CatalogueCheeseFrag : Fragment() {
         val pungent: Chip = chipGroup.findViewById(R.id.pungent)
         val sweet: Chip = chipGroup.findViewById(R.id.sweet)
 
-        mild.setOnCheckedChangeListener { _, isChecked ->
+        mild.setOnCheckedChangeListener { it, isChecked ->
             tempFlavour.setUpHelper("Mild", isChecked)
         }
 
-        buttery.setOnCheckedChangeListener { _, isCheck ->
+        buttery.setOnCheckedChangeListener { it, isCheck ->
             tempFlavour.setUpHelper("Buttery", isCheck)
         }
 
-        nutty.setOnCheckedChangeListener { _, isCheck ->
+        nutty.setOnCheckedChangeListener { it, isCheck ->
             tempFlavour.setUpHelper("Nutty", isCheck)
         }
 
-        tangy.setOnCheckedChangeListener { _, isCheck ->
+        tangy.setOnCheckedChangeListener { it, isCheck ->
             tempFlavour.setUpHelper("Tangy", isCheck)
         }
 
-        sharp.setOnCheckedChangeListener { _, isCheck ->
+        sharp.setOnCheckedChangeListener { it, isCheck ->
             tempFlavour.setUpHelper("Sharp", isCheck)
         }
 
-        pungent.setOnCheckedChangeListener { _, isCheck ->
+        pungent.setOnCheckedChangeListener { it, isCheck ->
             tempFlavour.setUpHelper("Pungent", isCheck)
         }
-        sweet.setOnCheckedChangeListener { _, isCheck ->
+        sweet.setOnCheckedChangeListener { it, isCheck ->
             tempFlavour.setUpHelper("Sweet", isCheck)
         }
     }
@@ -319,23 +339,23 @@ class CatalogueCheeseFrag : Fragment() {
         val aged: Chip = chipGroup.findViewById(R.id.aged)
         val xAged: Chip = chipGroup.findViewById(R.id.extraAged)
 
-        fresh.setOnCheckedChangeListener { _, isChecked ->
+        fresh.setOnCheckedChangeListener { it, isChecked ->
             tempAge.setUpHelper("Fresh (0-2 weeks)", isChecked)
         }
 
-        young.setOnCheckedChangeListener { _, isChecked ->
+        young.setOnCheckedChangeListener { it, isChecked ->
             tempAge.setUpHelper("Young (2-8 weeks)", isChecked)
         }
 
-        matured.setOnCheckedChangeListener { _, isChecked ->
+        matured.setOnCheckedChangeListener { it, isChecked ->
             tempAge.setUpHelper("Matured (2-6 months)", isChecked)
         }
 
-        aged.setOnCheckedChangeListener { _, isChecked ->
+        aged.setOnCheckedChangeListener { it, isChecked ->
             tempAge.setUpHelper("Aged (6 months-1 year)", isChecked)
         }
 
-        xAged.setOnCheckedChangeListener { _, isChecked ->
+        xAged.setOnCheckedChangeListener { it, isChecked ->
             tempAge.setUpHelper("Extra Aged (1+ years)", isChecked)
         }
 

@@ -93,7 +93,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="By milk source"
                             android:gravity="center|start"
                             android:textSize="16sp"
@@ -102,6 +102,7 @@
                             android:fontFamily="@font/poppins"
                             android:paddingBottom="4dp"/>
                         <ImageView
+                            android:id="@+id/mImg"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
                             android:src="@drawable/rounded_arrow_forward_ios_24"
@@ -191,6 +192,7 @@
                             android:paddingBottom="4dp"/>
 
                         <ImageView
+                            android:id="@+id/tImg"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
                             android:src="@drawable/rounded_arrow_forward_ios_24"
@@ -289,6 +291,7 @@
                             android:paddingBottom="4dp"/>
 
                         <ImageView
+                            android:id="@+id/fImg"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
                             android:src="@drawable/rounded_arrow_forward_ios_24"
@@ -396,6 +399,7 @@
                             android:paddingBottom="4dp"/>
 
                         <ImageView
+                            android:id="@+id/aImg"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
                             android:src="@drawable/rounded_arrow_forward_ios_24"
