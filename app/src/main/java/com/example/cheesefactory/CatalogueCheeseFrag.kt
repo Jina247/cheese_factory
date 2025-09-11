@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.core.view.isGone
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.ChipGroup
 import java.util.Locale
 
 class CatalogueCheeseFrag : Fragment() {
@@ -74,6 +76,47 @@ class CatalogueCheeseFrag : Fragment() {
                 return false
             }
         })
+
+        val filterSection: LinearLayout = view.findViewById(R.id.filterSection)
+        filterSection.isGone = true
+
+        val milkChipGroup: ChipGroup = view.findViewById(R.id.milkChipGrp)
+//        milkChipGroup.isGone = true
+
+        val flavourChipGroup: ChipGroup = view.findViewById(R.id.flavourChipGrp)
+        flavourChipGroup.isGone = true
+
+        val textureChipGroup: ChipGroup = view.findViewById(R.id.textureChipGrp)
+        textureChipGroup.isGone = true
+
+        val ageChipGroup: ChipGroup = view.findViewById(R.id.ageChipGrp)
+        ageChipGroup.isGone = true
+
+        val milkTitle: LinearLayout = view.findViewById(R.id.milkTitle)
+        val textureTitle: LinearLayout = view.findViewById(R.id.textureTitle)
+        val flavourTitle: LinearLayout = view.findViewById(R.id.flavourTitle)
+        val ageTitle: LinearLayout = view.findViewById(R.id.ageTitle)
+
+        val filterButton: CardView = view.findViewById(R.id.filterCard)
+        filterButton.setOnClickListener {
+            toggleButton(filterSection)
+        }
+
+        milkTitle.setOnClickListener {
+            toggleButton(milkChipGroup)
+        }
+
+        flavourTitle.setOnClickListener {
+            toggleButton(flavourChipGroup)
+        }
+
+        textureTitle.setOnClickListener {
+            toggleButton(textureChipGroup)
+        }
+
+        ageTitle.setOnClickListener {
+            toggleButton(ageChipGroup)
+        }
     }
 
     private fun filterList(query: String?) {
@@ -143,5 +186,8 @@ class CatalogueCheeseFrag : Fragment() {
                 cheeseWinePairing
             )
         }
+    }
+    fun toggleButton(view: View) {
+        view.isGone = !view.isGone
     }
 }
