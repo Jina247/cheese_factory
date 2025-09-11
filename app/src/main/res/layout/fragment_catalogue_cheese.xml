@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:iconifiedByDefault="false"
-                    app:queryHint="Search cheese..." />
+                    app:queryHint="Search cheese..."/>
             </com.google.android.material.card.MaterialCardView>
             
             <com.google.android.material.card.MaterialCardView
@@ -75,26 +75,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:descendantFocusability="blocksDescendants">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="By milk source"
-                    android:textSize="14sp"
+                    android:gravity="center|start"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/timber"
                     android:fontFamily="@font/poppins"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:paddingBottom="4dp"/>
 
-                <ImageButton
+                <ImageView
                     android:layout_width="48dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@drawable/outline_arrow_drop_down_24"
                     android:background="@android:color/transparent"
-                    app:tint="@color/terracotta" />
+                    app:tint="@color/terracotta"/>
             </LinearLayout>
 
             <com.google.android.material.chip.ChipGroup
@@ -126,8 +127,7 @@
                     app:chipStrokeWidth="0.5dp"
                     app:chipCornerRadius="24dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Buffalo"
-                    android:backgroundTint="@color/white"/>
+                    android:text="Buffalo"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/sheep"
@@ -166,6 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:descendantFocusability="blocksDescendants"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -174,17 +175,15 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="By texture"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/timber"
                     android:fontFamily="@font/poppins"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:paddingBottom="4dp"/>
 
-                <ImageButton
+                <ImageView
                     android:layout_width="48dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@drawable/outline_arrow_drop_down_24"
                     android:background="@android:color/transparent"
                     app:tint="@color/terracotta" />
@@ -269,26 +268,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:descendantFocusability="blocksDescendants">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="By flavour"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/timber"
                     android:fontFamily="@font/poppins"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:paddingBottom="4dp"/>
 
-                <ImageButton
+                <ImageView
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/outline_arrow_drop_down_24"
                     android:background="@android:color/transparent"
-                    app:tint="@color/terracotta" />
+                    app:tint="@color/terracotta"/>
             </LinearLayout>
 
             <com.google.android.material.chip.ChipGroup
@@ -379,21 +377,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:descendantFocusability="blocksDescendants">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="By aged"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/timber"
                     android:fontFamily="@font/poppins"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:paddingBottom="4dp"/>
 
-                <ImageButton
+                <ImageView
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/outline_arrow_drop_down_24"

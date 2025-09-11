@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -77,45 +78,85 @@ class CatalogueCheeseFrag : Fragment() {
             }
         })
 
+        // Initialize views
         val filterSection: LinearLayout = view.findViewById(R.id.filterSection)
-        filterSection.isGone = true
-
         val milkChipGroup: ChipGroup = view.findViewById(R.id.milkChipGrp)
-//        milkChipGroup.isGone = true
-
         val flavourChipGroup: ChipGroup = view.findViewById(R.id.flavourChipGrp)
-        flavourChipGroup.isGone = true
-
         val textureChipGroup: ChipGroup = view.findViewById(R.id.textureChipGrp)
-        textureChipGroup.isGone = true
-
         val ageChipGroup: ChipGroup = view.findViewById(R.id.ageChipGrp)
-        ageChipGroup.isGone = true
 
         val milkTitle: LinearLayout = view.findViewById(R.id.milkTitle)
         val textureTitle: LinearLayout = view.findViewById(R.id.textureTitle)
         val flavourTitle: LinearLayout = view.findViewById(R.id.flavourTitle)
         val ageTitle: LinearLayout = view.findViewById(R.id.ageTitle)
-
         val filterButton: CardView = view.findViewById(R.id.filterCard)
+
+        // Set initial visibility - hide everything except filter section
+        filterSection.isGone = true
+        milkChipGroup.isGone = true
+        flavourChipGroup.isGone = true
+        textureChipGroup.isGone = true
+        ageChipGroup.isGone = true
+
+        // Set up click listeners
         filterButton.setOnClickListener {
             toggleButton(filterSection)
+            // When filter section opens, make sure chip groups are hidden initially
+            if (filterSection.isVisible) {
+                milkChipGroup.isGone = true
+                flavourChipGroup.isGone = true
+                textureChipGroup.isGone = true
+                ageChipGroup.isGone = true
+            }
         }
 
         milkTitle.setOnClickListener {
-            toggleButton(milkChipGroup)
+            println("CheeseFragment: Milk title clicked - current visibility: ${milkChipGroup.visibility}")
+
+            // Simple direct approach
+            if (milkChipGroup.visibility == View.VISIBLE) {
+                milkChipGroup.visibility = View.GONE
+                println("CheeseFragment: Set milk chip group to GONE")
+            } else {
+                milkChipGroup.visibility = View.VISIBLE
+                println("CheeseFragment: Set milk chip group to VISIBLE")
+            }
+
+            // Force parent to re-layout
+            filterSection.requestLayout()
         }
 
         flavourTitle.setOnClickListener {
-            toggleButton(flavourChipGroup)
+            println("CheeseFragment: Flavour title clicked - current visibility: ${flavourChipGroup.visibility}")
+
+            if (flavourChipGroup.visibility == View.VISIBLE) {
+                flavourChipGroup.visibility = View.GONE
+            } else {
+                flavourChipGroup.visibility = View.VISIBLE
+            }
+            filterSection.requestLayout()
         }
 
         textureTitle.setOnClickListener {
-            toggleButton(textureChipGroup)
+            println("CheeseFragment: Texture title clicked - current visibility: ${textureChipGroup.visibility}")
+
+            if (textureChipGroup.visibility == View.VISIBLE) {
+                textureChipGroup.visibility = View.GONE
+            } else {
+                textureChipGroup.visibility = View.VISIBLE
+            }
+            filterSection.requestLayout()
         }
 
         ageTitle.setOnClickListener {
-            toggleButton(ageChipGroup)
+            println("CheeseFragment: Age title clicked - current visibility: ${ageChipGroup.visibility}")
+
+            if (ageChipGroup.visibility == View.VISIBLE) {
+                ageChipGroup.visibility = View.GONE
+            } else {
+                ageChipGroup.visibility = View.VISIBLE
+            }
+            filterSection.requestLayout()
         }
     }
 
@@ -137,6 +178,7 @@ class CatalogueCheeseFrag : Fragment() {
             }
         }
     }
+
     fun setUpCheeseHelper() {
         val cheeseImg = arrayOf(
             R.drawable.brie,
@@ -187,7 +229,20 @@ class CatalogueCheeseFrag : Fragment() {
             )
         }
     }
-    fun toggleButton(view: View) {
+
+    // Enhanced toggle function with debugging
+    private fun toggleButton(view: View) {
         view.isGone = !view.isGone
+        // Optional: Add logging to debug
+        // Log.d("CheeseFragment", "Toggled ${view.id}: isGone = ${view.isGone}")
+    }
+
+    // Alternative toggle function if the above doesn't work
+    private fun toggleButtonAlternative(view: View) {
+        if (view.visibility == View.GONE) {
+            view.visibility = View.VISIBLE
+        } else {
+            view.visibility = View.GONE
+        }
     }
 }
