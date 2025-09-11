@@ -79,34 +79,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageCard" />
 
-        <!-- Category Badge -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/categoryBadge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardBackgroundColor="@color/amber"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cheeseDetailName">
-
-            <TextView
-                android:id="@+id/cheeseCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:paddingStart="16dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp"
-                android:text="Soft Cheese"
-                android:textColor="@color/cream"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-        </com.google.android.material.card.MaterialCardView>
-
         <!-- Info Section -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/infoCard"
@@ -119,7 +91,7 @@
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categoryBadge">
+            app:layout_constraintTop_toBottomOf="@+id/cheeseDetailName">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -331,7 +303,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
-                        android:text=" Wine: "
+                        android:text="Wine: "
                         android:textColor="@color/timber"
                         android:textSize="14sp"
                         android:textStyle="bold" />

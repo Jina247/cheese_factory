@@ -32,7 +32,7 @@ class FavouriteCheeseFrag : Fragment() {
         viewModel.favouriteCheeseList.observe(viewLifecycleOwner) { favouriteCheeseData ->
 
             if (favouriteCheeseData.isEmpty()) {
-                Toast.makeText(requireContext(), "No favourite cheeses yet!", Toast.LENGTH_SHORT).show()
+
             }
 
             cheeseFavAdapter = CheeseAdapter(favouriteCheeseData, requireContext(),

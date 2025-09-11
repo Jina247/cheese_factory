@@ -29,7 +29,7 @@ class DetailCheese : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity() as MainActivity).hideFooter()
         val backBtn: ImageButton = view.findViewById(R.id.backButton)
         val likeBtn: ImageButton = view.findViewById(R.id.favoriteButton)
         val image: ImageView = view.findViewById(R.id.cheeseDetailImage)
@@ -59,9 +59,9 @@ class DetailCheese : Fragment() {
                 // Handle back button
                 backBtn.setOnClickListener {
                     parentFragmentManager.popBackStack()
+                    (requireActivity() as MainActivity).showFooter()
                 }
 
-                // Handle like button - FIXED LOGIC
                 likeBtn.setOnClickListener {
                     val currentFavs = viewModel.favouriteCheeseList.value ?: mutableListOf()
                     viewModel.doLike(cheese, currentFavs)
@@ -74,13 +74,11 @@ class DetailCheese : Fragment() {
                     }
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
-                    // Update button appearance
                     updateLikeButton(likeBtn, cheese.isLiked)
                 }
             }
         }
     }
-
     private fun updateLikeButton(button: ImageButton, isLiked: Boolean) {
         if (isLiked) {
             button.setImageResource(R.drawable.liked)
