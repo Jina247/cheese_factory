@@ -41,8 +41,8 @@ class FavouriteCheeseFrag : Fragment() {
 
                 Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
-                val currentFavs = viewModel.favouriteCheeseList.value ?: mutableListOf()
-                viewModel.doLike(clickedCheese, currentFavs)
+                val currentFav = viewModel.favouriteCheeseList.value ?: mutableListOf()
+                viewModel.doLike(clickedCheese, currentFav)
 
             }, onItemClick = { clickedCheese ->
                     viewModel.selectCheese(clickedCheese)
