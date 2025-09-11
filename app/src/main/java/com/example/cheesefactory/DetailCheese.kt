@@ -29,7 +29,7 @@ class DetailCheese : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity() as MainActivity).hideFooter()
         val backBtn: ImageButton = view.findViewById(R.id.backButton)
         val likeBtn: ImageButton = view.findViewById(R.id.favoriteButton)
         val image: ImageView = view.findViewById(R.id.cheeseDetailImage)
@@ -40,8 +40,6 @@ class DetailCheese : Fragment() {
         val desc: TextView = view.findViewById(R.id.cheeseDescription)
         val foodPair: TextView = view.findViewById(R.id.foodPairing)
         val winePair: TextView = view.findViewById(R.id.wineParning)
-        val favButton: ImageButton = view.findViewById(R.id.favouriteBtn)
-        val catalogueBtn: ImageButton = view.findViewById(R.id.catalogBtn)
 
         viewModel.selectedCheese.observe(viewLifecycleOwner) { cheeseData ->
             cheeseData?.let { cheese ->
@@ -61,6 +59,7 @@ class DetailCheese : Fragment() {
                 // Handle back button
                 backBtn.setOnClickListener {
                     parentFragmentManager.popBackStack()
+                    (requireActivity() as MainActivity).showFooter()
                 }
 
                 likeBtn.setOnClickListener {
@@ -77,23 +76,14 @@ class DetailCheese : Fragment() {
 
                     updateLikeButton(likeBtn, cheese.isLiked)
                 }
-
-                catalogueBtn.setOnClickListener {
-                    parentFragmentManager.findFragmentByTag("CATALOGUE")
-                }
             }
         }
     }
-
     private fun updateLikeButton(button: ImageButton, isLiked: Boolean) {
         if (isLiked) {
             button.setImageResource(R.drawable.liked)
         } else {
             button.setImageResource(R.drawable.like)
         }
-    }
-
-    private fun favButton() {
-
     }
 }

@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <!-- Search Row -->
         <LinearLayout
             android:id="@+id/searchContainer"
@@ -38,10 +37,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:iconifiedByDefault="false"
-                    app:queryHint="Search cheese..."/>
-
+                    app:queryHint="Search cheese..." />
             </com.google.android.material.card.MaterialCardView>
-
+            
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/filterCard"
                 android:layout_width="48dp"
@@ -63,101 +61,195 @@
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
-        <!-- Filter Options (hidden by default) -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/filterOptionsCard"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:visibility="gone"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="8dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingBottom="8dp"
+            android:id="@+id/filterSection">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp"
-                android:minWidth="160dp">
-
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:focusable="true">
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/filter_by_category"
-                    android:fontFamily="@font/poppins"
+                    android:text="By milk source"
+                    android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black"
-                    android:paddingBottom="8dp" />
-
-                <TextView
-                    android:id="@+id/filterAll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/all_cheeses"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="14sp"
                     android:textColor="@color/timber"
-                    android:padding="8dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true" />
-
-                <TextView
-                    android:id="@+id/filterMilk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/milk"
                     android:fontFamily="@font/poppins"
-                    android:textSize="14sp"
-                    android:textColor="@color/timber"
-                    android:padding="8dp"
-                    android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
-                    android:focusable="true" />
+                    android:focusable="true"
+                    android:paddingBottom="4dp"/>
 
-                <TextView
-                    android:id="@+id/filterTexture"
-                    android:layout_width="match_parent"
+                <ImageButton
+                    android:layout_width="48dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/texture"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="14sp"
-                    android:textColor="@color/timber"
-                    android:padding="8dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true" />
-
-                <TextView
-                    android:id="@+id/filterAge"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/age"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="14sp"
-                    android:textColor="@color/timber"
-                    android:padding="8dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true" />
-
-                <TextView
-                    android:id="@+id/filterFlavour"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/flavour"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="14sp"
-                    android:textColor="@color/timber"
-                    android:padding="8dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true" />
+                    android:src="@drawable/outline_arrow_drop_down_24"
+                    android:background="@android:color/transparent"
+                    app:tint="@color/terracotta" />
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
 
-        <!-- RecyclerView fills the rest -->
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/milkChipGrp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                app:chipSpacing="8dp"
+                app:lineSpacing="4dp">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cow"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/terracotta"
+                    android:fontFamily="@font/poppins"
+                    android:text="Cow"
+                    app:chipStrokeColor="@color/terracotta"
+                    app:chipStrokeWidth="0.5dp"
+                    app:chipCornerRadius="24dp"
+                    android:textColor="@color/cream" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/buffalo"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipStrokeWidth="0.5dp"
+                    app:chipCornerRadius="24dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Buffalo"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/sheep"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipStrokeWidth="0.5dp"
+                    android:fontFamily="@font/poppins"
+                    app:chipCornerRadius="24dp"
+                    android:text="Sheep"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/goat"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipStrokeWidth="0.5dp"
+                    android:fontFamily="@font/poppins"
+                    app:chipCornerRadius="24dp"
+                    android:text="Goat"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:focusable="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="By texture"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/timber"
+                    android:fontFamily="@font/poppins"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingBottom="4dp"/>
+
+                <ImageButton
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/outline_arrow_drop_down_24"
+                    android:background="@android:color/transparent"
+                    app:tint="@color/terracotta" />
+            </LinearLayout>
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/textureChipGrp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                app:chipSpacing="8dp"
+                app:lineSpacing="4dp">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/soft"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/terracotta"
+                    android:fontFamily="@font/poppins"
+                    android:text="Soft"
+                    app:chipStrokeColor="@color/terracotta"
+                    app:chipStrokeWidth="0.5dp"
+                    app:chipCornerRadius="24dp"
+                    android:textColor="@color/cream" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/s_soft"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipStrokeWidth="0.5dp"
+                    app:chipCornerRadius="24dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Semi-soft"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/s_hard"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipStrokeWidth="0.5dp"
+                    android:fontFamily="@font/poppins"
+                    app:chipCornerRadius="24dp"
+                    android:text="Semi-hard"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/hard"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipStrokeWidth="0.5dp"
+                    android:fontFamily="@font/poppins"
+                    app:chipCornerRadius="24dp"
+                    android:text="Hard"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/crumbly"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipStrokeWidth="0.5dp"
+                    android:fontFamily="@font/poppins"
+                    app:chipCornerRadius="24dp"
+                    android:text="Crumbly"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/spread"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipStrokeWidth="0.5dp"
+                    android:fontFamily="@font/poppins"
+                    app:chipCornerRadius="24dp"
+                    android:text="Spreadable"/>
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+
+
+    <!-- RecyclerView fills the rest -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerCheeseCatalogView"
             android:layout_width="match_parent"

@@ -1,7 +1,9 @@
 package com.example.cheesefactory
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -88,4 +90,15 @@ class MainActivity : AppCompatActivity() {
             catalogueTxt.setTextColor(inactiveColor)
         }
     }
+
+    fun showFooter() {
+        val footer: LinearLayout = findViewById(R.id.footer)
+        footer.visibility = View.VISIBLE
+    }
+
+    fun hideFooter() {
+        val footer: LinearLayout = findViewById(R.id.footer)
+        footer.visibility = View.GONE
+    }
+
 }

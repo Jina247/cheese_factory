@@ -12,6 +12,7 @@ class CheeseViewModel: ViewModel() {
     val favouriteCheeseList: LiveData<MutableList<CheeseData>> = _favouriteCheeseList
     private val _selectedCheese = MutableLiveData<CheeseData>()
     val selectedCheese: LiveData<CheeseData> = _selectedCheese
+
     fun setUpCheese(cheeseImage : Array<Int>, cheeseName: Array<String>,
                     cheeseShortDesc: Array<String>, cheeseLongDesc: Array<String>,
                     cheeseOrigin: Array<String>, cheeseMilkSource: Array<String>,
