@@ -12,8 +12,12 @@ class CheeseViewModel: ViewModel() {
     val favouriteCheeseList: LiveData<MutableList<CheeseData>> = _favouriteCheeseList
     private val _selectedCheese = MutableLiveData<CheeseData>()
     val selectedCheese: LiveData<CheeseData> = _selectedCheese
-    private val _selectedList =  MutableLiveData<MutableList<CheeseData>>()
-    val selectedList: LiveData<MutableList<CheeseData>> = _selectedList
+    private val _filteredList =  MutableLiveData<MutableList<CheeseData>>()
+    val filteredList: LiveData<MutableList<CheeseData>> = _filteredList
+    private val selectedMilk = mutableSetOf<String>()
+    private val selectedTexture = mutableSetOf<String>()
+    private val selectedFlavour = mutableSetOf<String>()
+    private val selectedAged = mutableSetOf<String>()
 
     fun setUpCheese(cheeseImage : Array<Int>, cheeseName: Array<String>,
                     cheeseShortDesc: Array<String>, cheeseLongDesc: Array<String>,
@@ -39,26 +43,26 @@ class CheeseViewModel: ViewModel() {
         _favouriteCheeseList.value = mutableListOf()
     }
 
-    fun addToFavourites(cheese: CheeseData, currentFavs: MutableList<CheeseData>) {
-        if (!(currentFavs.contains(cheese))) {
+    fun addToFavourites(cheese: CheeseData, currentFav: MutableList<CheeseData>) {
+        if (!(currentFav.contains(cheese))) {
             cheese.isLiked = true
-            currentFavs.add(cheese)
-            _favouriteCheeseList.value = currentFavs
+            currentFav.add(cheese)
+            _favouriteCheeseList.value = currentFav
 
         }
     }
 
-    fun removeFromFavourites(cheese: CheeseData, currentFavs: MutableList<CheeseData>) {
-        currentFavs.remove(cheese)
+    fun removeFromFavourites(cheese: CheeseData, currentFav: MutableList<CheeseData>) {
+        currentFav.remove(cheese)
         cheese.isLiked = false
-        _favouriteCheeseList.value = currentFavs
+        _favouriteCheeseList.value = currentFav
     }
 
-    fun doLike(cheese: CheeseData, currentFavs: MutableList<CheeseData>) {
+    fun doLike(cheese: CheeseData, currentFav: MutableList<CheeseData>) {
         if (cheese.isLiked) {
-            removeFromFavourites(cheese, currentFavs)
+            removeFromFavourites(cheese, currentFav)
         } else {
-            addToFavourites(cheese, currentFavs)
+            addToFavourites(cheese, currentFav)
         }
         _cheeseList.value = _cheeseList.value
     }
@@ -67,10 +71,38 @@ class CheeseViewModel: ViewModel() {
         _selectedCheese.value = cheese
     }
 
-    fun getMilkCheeseList(cheese: CheeseData, type: String, curList: MutableList<CheeseData>) {
-        if (cheese.milkSource == type) {
-            curList.add(cheese)
+    fun setFilters(
+        milk: Set<String>,
+        texture: Set<String>,
+        flavour: Set<String>,
+        age: Set<String>
+    ) {
+        selectedMilk.clear(); selectedMilk.addAll(milk)
+        selectedTexture.clear(); selectedTexture.addAll(texture)
+        selectedFlavour.clear(); selectedFlavour.addAll(flavour)
+        selectedAged.clear(); selectedAged.addAll(age)
+        applyFilters()
+    }
+
+    private fun applyFilters() {
+        val allCheeses = _cheeseList.value ?: return
+        var result = allCheeses
+
+        if (selectedMilk.isNotEmpty()) {
+            result = result.filter { it.milkSource in selectedMilk }.toMutableList()
         }
-        _selectedList.value = curList
+
+        if (selectedTexture.isNotEmpty()) {
+            result = result.filter { it.texture in selectedTexture }.toMutableList()
+        }
+
+        if (selectedFlavour.isNotEmpty()) {
+            result = result.filter { it.flavour in selectedFlavour }.toMutableList()
+        }
+
+        if (selectedAged.isNotEmpty()) {
+            result = result.filter { it.age in selectedAged }.toMutableList()
+        }
+        _filteredList.value = result
     }
 }

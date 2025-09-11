@@ -14,6 +14,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import java.util.Locale
 
@@ -22,6 +23,10 @@ class CatalogueCheeseFrag : Fragment() {
         ViewModelProvider(requireActivity())[CheeseViewModel::class.java]
     }
     private lateinit var cheeseAdapter: CheeseAdapter
+    private val tempMilk = mutableSetOf<String>()
+    private val tempTexture = mutableSetOf<String>()
+    private val tempFlavour = mutableSetOf<String>()
+    private val tempAge = mutableSetOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,8 +54,8 @@ class CatalogueCheeseFrag : Fragment() {
                         "${clickedCheese.name} added to favorites!"
                     }
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-                    val currentFavs = viewModel.favouriteCheeseList.value ?: mutableListOf()
-                    viewModel.doLike(clickedCheese, currentFavs)
+                    val currentFav = viewModel.favouriteCheeseList.value ?: mutableListOf()
+                    viewModel.doLike(clickedCheese, currentFav)
                 },
                 onItemClick = { clickedCheese ->
                     // Save clicked cheese in ViewModel
@@ -69,16 +74,16 @@ class CatalogueCheeseFrag : Fragment() {
         val searchView = view.findViewById<SearchView>(R.id.searchView)
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextChange(p0: String?): Boolean {
-                filterList(p0)
+                searchList(p0)
                 return true
             }
 
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                return false
+                searchList(p0)
+                return true
             }
         })
 
-        // Initialize views
         val filterSection: LinearLayout = view.findViewById(R.id.filterSection)
         val milkChipGroup: ChipGroup = view.findViewById(R.id.milkChipGrp)
         val flavourChipGroup: ChipGroup = view.findViewById(R.id.flavourChipGrp)
@@ -89,19 +94,16 @@ class CatalogueCheeseFrag : Fragment() {
         val textureTitle: LinearLayout = view.findViewById(R.id.textureTitle)
         val flavourTitle: LinearLayout = view.findViewById(R.id.flavourTitle)
         val ageTitle: LinearLayout = view.findViewById(R.id.ageTitle)
-        val filterButton: CardView = view.findViewById(R.id.filterCard)
 
-        // Set initial visibility - hide everything except filter section
         filterSection.isGone = true
         milkChipGroup.isGone = true
         flavourChipGroup.isGone = true
         textureChipGroup.isGone = true
         ageChipGroup.isGone = true
 
-        // Set up click listeners
+        val filterButton: CardView = view.findViewById(R.id.filterCard)
         filterButton.setOnClickListener {
             toggleButton(filterSection)
-            // When filter section opens, make sure chip groups are hidden initially
             if (filterSection.isVisible) {
                 milkChipGroup.isGone = true
                 flavourChipGroup.isGone = true
@@ -111,56 +113,36 @@ class CatalogueCheeseFrag : Fragment() {
         }
 
         milkTitle.setOnClickListener {
-            println("CheeseFragment: Milk title clicked - current visibility: ${milkChipGroup.visibility}")
-
-            // Simple direct approach
-            if (milkChipGroup.visibility == View.VISIBLE) {
-                milkChipGroup.visibility = View.GONE
-                println("CheeseFragment: Set milk chip group to GONE")
-            } else {
-                milkChipGroup.visibility = View.VISIBLE
-                println("CheeseFragment: Set milk chip group to VISIBLE")
-            }
-
-            // Force parent to re-layout
-            filterSection.requestLayout()
+            toggleButton(milkChipGroup)
+            setUpMilkChips(milkChipGroup)
         }
 
         flavourTitle.setOnClickListener {
-            println("CheeseFragment: Flavour title clicked - current visibility: ${flavourChipGroup.visibility}")
-
-            if (flavourChipGroup.visibility == View.VISIBLE) {
-                flavourChipGroup.visibility = View.GONE
-            } else {
-                flavourChipGroup.visibility = View.VISIBLE
-            }
-            filterSection.requestLayout()
+            toggleButton(flavourChipGroup)
+            setUpFlavourChips(flavourChipGroup)
         }
 
         textureTitle.setOnClickListener {
-            println("CheeseFragment: Texture title clicked - current visibility: ${textureChipGroup.visibility}")
-
-            if (textureChipGroup.visibility == View.VISIBLE) {
-                textureChipGroup.visibility = View.GONE
-            } else {
-                textureChipGroup.visibility = View.VISIBLE
-            }
-            filterSection.requestLayout()
+            toggleButton(textureChipGroup)
+            setUpTextureChips(textureChipGroup)
         }
 
         ageTitle.setOnClickListener {
-            println("CheeseFragment: Age title clicked - current visibility: ${ageChipGroup.visibility}")
+            toggleButton(ageChipGroup)
+            setUpAgedChips(ageChipGroup)
+        }
 
-            if (ageChipGroup.visibility == View.VISIBLE) {
-                ageChipGroup.visibility = View.GONE
-            } else {
-                ageChipGroup.visibility = View.VISIBLE
+        val submit: LinearLayout = view.findViewById(R.id.submitBtn)
+        submit.setOnClickListener {
+            viewModel.setFilters(tempMilk, tempTexture, tempFlavour, tempAge)
+            viewModel.filteredList.observe(viewLifecycleOwner) { cheeseData ->
+                cheeseAdapter.updateList(cheeseData)
+                filterSection.isGone = true
             }
-            filterSection.requestLayout()
         }
     }
 
-    private fun filterList(query: String?) {
+    private fun searchList(query: String?) {
         if (query != null) {
             val filteredList = ArrayList<CheeseData>()
             for (i in viewModel.cheeseList.value!!) {
@@ -172,13 +154,12 @@ class CatalogueCheeseFrag : Fragment() {
             if (filteredList.isEmpty()) {
                 Toast.makeText(requireContext(), "No cheese is found", Toast.LENGTH_SHORT)
                     .show()
-                cheeseAdapter.updateList(emptyList())
+                cheeseAdapter.updateList(mutableListOf())
             } else {
                 cheeseAdapter.updateList(filteredList)
             }
         }
     }
-
     fun setUpCheeseHelper() {
         val cheeseImg = arrayOf(
             R.drawable.brie,
@@ -229,20 +210,140 @@ class CatalogueCheeseFrag : Fragment() {
             )
         }
     }
-
-    // Enhanced toggle function with debugging
-    private fun toggleButton(view: View) {
+    fun toggleButton(view: View) {
         view.isGone = !view.isGone
-        // Optional: Add logging to debug
-        // Log.d("CheeseFragment", "Toggled ${view.id}: isGone = ${view.isGone}")
     }
 
-    // Alternative toggle function if the above doesn't work
-    private fun toggleButtonAlternative(view: View) {
-        if (view.visibility == View.GONE) {
-            view.visibility = View.VISIBLE
-        } else {
-            view.visibility = View.GONE
+    fun setUpMilkChips(chipGroup: ChipGroup) {
+        val cow: Chip = chipGroup.findViewById(R.id.cow)
+        val buffalo: Chip = chipGroup.findViewById(R.id.buffalo)
+        val sheep: Chip = chipGroup.findViewById(R.id.sheep)
+        val goat: Chip = chipGroup.findViewById(R.id.goat)
+        val mixed: Chip = chipGroup.findViewById(R.id.mixed)
+
+        cow.setOnCheckedChangeListener { _, isChecked ->
+            tempMilk.setUpHelper("Cow\'s Milk", isChecked)
+        }
+
+        buffalo.setOnCheckedChangeListener { _, isChecked ->
+            tempMilk.setUpHelper("Buffalo\'s Milk", isChecked)
+        }
+
+        sheep.setOnCheckedChangeListener { _, isChecked ->
+            tempMilk.setUpHelper("Sheep\'s Milk", isChecked)
+        }
+
+        goat.setOnCheckedChangeListener { _, isChecked ->
+            tempMilk.setUpHelper("Goat\'s Milk", isChecked)
+        }
+
+        mixed.setOnCheckedChangeListener { _, isChecked ->
+            tempMilk.setUpHelper("Mixed Milk", isChecked)
         }
     }
+
+    fun setUpTextureChips(chipGroup: ChipGroup) {
+        val soft: Chip = chipGroup.findViewById(R.id.soft)
+        val s_soft: Chip = chipGroup.findViewById(R.id.s_soft)
+        val s_hard: Chip = chipGroup.findViewById(R.id.s_hard)
+        val hard: Chip = chipGroup.findViewById(R.id.hard)
+        val crumbly: Chip = chipGroup.findViewById(R.id.crumbly)
+        val spreadable: Chip = chipGroup.findViewById(R.id.spread)
+
+        soft.setOnCheckedChangeListener { _, isChecked ->
+            tempTexture.setUpHelper("Soft", isChecked)
+        }
+
+        s_soft.setOnCheckedChangeListener { _, isChecked ->
+            tempTexture.setUpHelper("Semi-soft", isChecked)
+        }
+
+        s_hard.setOnCheckedChangeListener { _, isChecked ->
+            tempTexture.setUpHelper("Semi-hard", isChecked)
+        }
+
+        hard.setOnCheckedChangeListener { _, isChecked ->
+            tempTexture.setUpHelper("Hard", isChecked)
+        }
+
+        crumbly.setOnCheckedChangeListener { _, isChecked ->
+            tempTexture.setUpHelper("Crumbly", isChecked)
+        }
+
+        spreadable.setOnCheckedChangeListener { _, isChecked ->
+            tempTexture.setUpHelper("Spreadable", isChecked)
+        }
+    }
+
+    fun setUpFlavourChips(chipGroup: ChipGroup) {
+        val mild: Chip = chipGroup.findViewById(R.id.mild)
+        val buttery: Chip = chipGroup.findViewById(R.id.buttery)
+        val nutty: Chip = chipGroup.findViewById(R.id.nutty)
+        val tangy: Chip = chipGroup.findViewById(R.id.tangy)
+        val sharp: Chip = chipGroup.findViewById(R.id.sharp)
+        val pungent: Chip = chipGroup.findViewById(R.id.pungent)
+        val sweet: Chip = chipGroup.findViewById(R.id.sweet)
+
+        mild.setOnCheckedChangeListener { _, isChecked ->
+            tempFlavour.setUpHelper("Mild", isChecked)
+        }
+
+        buttery.setOnCheckedChangeListener { _, isCheck ->
+            tempFlavour.setUpHelper("Buttery", isCheck)
+        }
+
+        nutty.setOnCheckedChangeListener { _, isCheck ->
+            tempFlavour.setUpHelper("Nutty", isCheck)
+        }
+
+        tangy.setOnCheckedChangeListener { _, isCheck ->
+            tempFlavour.setUpHelper("Tangy", isCheck)
+        }
+
+        sharp.setOnCheckedChangeListener { _, isCheck ->
+            tempFlavour.setUpHelper("Sharp", isCheck)
+        }
+
+        pungent.setOnCheckedChangeListener { _, isCheck ->
+            tempFlavour.setUpHelper("Pungent", isCheck)
+        }
+        sweet.setOnCheckedChangeListener { _, isCheck ->
+            tempFlavour.setUpHelper("Sweet", isCheck)
+        }
+    }
+
+    fun setUpAgedChips(chipGroup: ChipGroup) {
+        val fresh: Chip = chipGroup.findViewById(R.id.fresh)
+        val young: Chip = chipGroup.findViewById(R.id.young)
+        val matured: Chip = chipGroup.findViewById(R.id.matured)
+        val aged: Chip = chipGroup.findViewById(R.id.aged)
+        val xAged: Chip = chipGroup.findViewById(R.id.extraAged)
+
+        fresh.setOnCheckedChangeListener { _, isChecked ->
+            tempAge.setUpHelper("Fresh (0-2 weeks)", isChecked)
+        }
+
+        young.setOnCheckedChangeListener { _, isChecked ->
+            tempAge.setUpHelper("Young (2-8 weeks)", isChecked)
+        }
+
+        matured.setOnCheckedChangeListener { _, isChecked ->
+            tempAge.setUpHelper("Matured (2-6 months)", isChecked)
+        }
+
+        aged.setOnCheckedChangeListener { _, isChecked ->
+            tempAge.setUpHelper("Aged (6 months-1 year)", isChecked)
+        }
+
+        xAged.setOnCheckedChangeListener { _, isChecked ->
+            tempAge.setUpHelper("Extra Aged (1+ years)", isChecked)
+        }
+
+    }
+
+    private fun MutableSet<String>.setUpHelper(value: String, isChecked: Boolean) {
+        if (isChecked) add(value) else remove(value)
+    }
+
+
 }

@@ -4,21 +4,22 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 
 class CheeseAdapter(
-    private var cheese: List<CheeseData>,
+    private var cheese: MutableList<CheeseData>,
     private val context: Context,
     private val onLikeClick: (CheeseData) -> Unit,
     private val onItemClick: (CheeseData) -> Unit
-): RecyclerView.Adapter<CheeseAdapter.ViewHolder>() {
+): RecyclerView.Adapter<CheeseAdapter.ViewHolder>(){
 
-    fun updateList(cList: List<CheeseData>) {
+    fun updateList(cList: MutableList<CheeseData>) {
         this.cheese = cList
         notifyDataSetChanged()
     }
@@ -61,7 +62,7 @@ class CheeseAdapter(
         return cheese.size
     }
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val cheeseName: TextView = view.findViewById(R.id.cheeseName)
         val shortDes: TextView = view.findViewById(R.id.cheeseDescription)
         val cheeseImg: ImageView = view.findViewById(R.id.cheeseImage)
