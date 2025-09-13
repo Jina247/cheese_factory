@@ -194,6 +194,7 @@ class CatalogueCheeseFrag : Fragment() {
             R.drawable.roquefort
         )
         val cheeseName = resources.getStringArray(R.array.cheese_names)
+        val cheeseFullName = resources.getStringArray(R.array.cheese_full_names)
         val cheeseShortDesc = resources.getStringArray(R.array.cheese_short_desc)
         val cheeseLongDesc = resources.getStringArray(R.array.cheese_descriptions)
         val cheeseOrigin = resources.getStringArray(R.array.cheese_origins)
@@ -208,6 +209,7 @@ class CatalogueCheeseFrag : Fragment() {
             viewModel.setUpCheese(
                 cheeseImg,
                 cheeseName,
+                cheeseFullName,
                 cheeseShortDesc,
                 cheeseLongDesc,
                 cheeseOrigin,

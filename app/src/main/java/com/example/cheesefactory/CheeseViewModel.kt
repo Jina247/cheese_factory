@@ -19,7 +19,7 @@ class CheeseViewModel: ViewModel() {
     private val selectedFlavour = mutableSetOf<String>()
     private val selectedAged = mutableSetOf<String>()
 
-    fun setUpCheese(cheeseImage : Array<Int>, cheeseName: Array<String>,
+    fun setUpCheese(cheeseImage : Array<Int>, cheeseName: Array<String>, cheeseFullName: Array<String>,
                     cheeseShortDesc: Array<String>, cheeseLongDesc: Array<String>,
                     cheeseOrigin: Array<String>, cheeseMilkSource: Array<String>,
                     cheeseTexture: Array<String>, cheeseAge: Array<String>,
@@ -28,6 +28,7 @@ class CheeseViewModel: ViewModel() {
         for (i in cheeseName.indices) {
             cheeses.add(CheeseData(cheeseImage[i],
                 cheeseName[i],
+                cheeseFullName[i],
                 cheeseShortDesc[i],
                 false,
                 cheeseLongDesc[i],

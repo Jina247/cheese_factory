@@ -3,6 +3,7 @@ package com.example.cheesefactory
 data class CheeseData(
     val image: Int,
     val name: String,
+    val fullName: String,
     val shortDescription: String,
     var isLiked: Boolean,
     val longDescription: String,

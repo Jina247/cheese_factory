@@ -86,6 +86,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:descendantFocusability="blocksDescendants">
@@ -98,7 +99,7 @@
                             android:gravity="center|start"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:textColor="@color/timber"
+                            android:textColor="@color/terracotta"
                             android:fontFamily="@font/poppins"
                             android:paddingBottom="4dp"/>
                         <ImageView
@@ -120,52 +121,37 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/cow"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="Cow"
-                            app:chipStrokeWidth="0.5dp"
-                            app:chipCornerRadius="24dp"/>
+                            android:text="Cow"/>
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/buffalo"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            app:chipCornerRadius="24dp"
-                            android:fontFamily="@font/poppins"
                             android:text="Buffalo"/>
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/sheep"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
                             android:text="Sheep"/>
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/goat"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
                             android:text="Goat"/>
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/mixed"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
                             android:text="Mixed"/>
 
                     </com.google.android.material.chip.ChipGroup>
@@ -176,6 +162,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:descendantFocusability="blocksDescendants"
+                        android:layout_marginTop="5dp"
                         android:clickable="true"
                         android:focusable="true">
 
@@ -187,7 +174,7 @@
                             android:gravity="center|start"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:textColor="@color/timber"
+                            android:textColor="@color/terracotta"
                             android:fontFamily="@font/poppins"
                             android:paddingBottom="4dp"/>
 
@@ -211,27 +198,21 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/soft"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="Soft"
-                            app:chipStrokeWidth="0.5dp"
-                            app:chipCornerRadius="24dp" />
+                            android:text="Soft" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/s_soft"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            app:chipCornerRadius="24dp"
-                            android:fontFamily="@font/poppins"
                             android:text="Semi-soft"/>
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/s_hard"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -241,7 +222,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/hard"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -251,7 +232,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/crumbly"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -261,7 +242,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/spread"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -275,6 +256,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:descendantFocusability="blocksDescendants">
@@ -286,7 +268,7 @@
                             android:gravity="center|start"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:textColor="@color/timber"
+                            android:textColor="@color/terracotta"
                             android:fontFamily="@font/poppins"
                             android:paddingBottom="4dp"/>
 
@@ -309,7 +291,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/mild"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
@@ -319,7 +301,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/buttery"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -329,7 +311,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/nutty"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -339,7 +321,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/tangy"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -349,7 +331,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/sharp"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -359,7 +341,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/pungent"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -369,7 +351,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/sweet"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -383,9 +365,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:descendantFocusability="blocksDescendants">
+
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
@@ -394,7 +378,7 @@
                             android:gravity="center|start"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:textColor="@color/timber"
+                            android:textColor="@color/terracotta"
                             android:fontFamily="@font/poppins"
                             android:paddingBottom="4dp"/>
 
@@ -417,7 +401,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/fresh"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
@@ -427,7 +411,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/young"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -437,7 +421,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/matured"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -447,7 +431,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/aged"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"
@@ -457,7 +441,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/extraAged"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/MyFilterChip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:chipStrokeWidth="0.5dp"

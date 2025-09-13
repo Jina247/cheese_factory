@@ -24,6 +24,30 @@
         <item>Roquefort</item>
     </string-array>
 
+    <string-array name="cheese_full_names">
+        <item>Brie de Meaux</item>
+        <item>Burrata di Andria</item>
+        <item>Queso de Cabrales</item>
+        <item>Camembert de Normandie</item>
+        <item>West Country Farmhouse Cheddar</item>
+        <item>Fromage de Chèvre</item>
+        <item>Colby Cheese</item>
+        <item>Cottage Cheese</item>
+        <item>Emmentaler</item>
+        <item>Formatge de Garrotxa</item>
+        <item>Goudse Kaas</item>
+        <item>Gruyère AOP</item>
+        <item>Havarti Ost</item>
+        <item>Queso Manchego</item>
+        <item>Mascarpone Lombardo</item>
+        <item>Mozzarella Fior di Latte</item>
+        <item>Mozzarella di Bufala Campana DOP</item>
+        <item>Parmigiano Reggiano</item>
+        <item>Pecorino Romano DOP</item>
+        <item>Roquefort AOP</item>
+    </string-array>
+
+
     <!-- Short Descriptions -->
     <string-array name="cheese_short_desc">
         <item>Soft French cheese with bloomy rind.</item>
@@ -167,33 +191,9 @@
         <item>Pungent</item>
     </string-array>
 
-    <!-- Main Categories -->
-    <string-array name="cheese_main_categories">
-        <item>Soft Cheese</item>
-        <item>Fresh Cheese</item>
-        <item>Blue Cheese</item>
-        <item>Soft Cheese</item>
-        <item>Hard Cheese</item>
-        <item>Soft Cheese</item>
-        <item>Semi-Hard Cheese</item>
-        <item>Fresh Cheese</item>
-        <item>Hard Cheese</item>
-        <item>Semi-Hard Cheese</item>
-        <item>Semi-Hard Cheese</item>
-        <item>Hard Cheese</item>
-        <item>Semi-Hard Cheese</item>
-        <item>Hard Cheese</item>
-        <item>Fresh Cheese</item>
-        <item>Fresh Cheese</item>
-        <item>Fresh Cheese</item>
-        <item>Hard Cheese</item>
-        <item>Hard Cheese</item>
-        <item>Blue Cheese</item>
-    </string-array>
-
     <!-- Detailed Descriptions -->
     <string-array name="cheese_descriptions">
-        <item>Brie is a soft French cheese with a creamy texture and rich, buttery flavor. Its white, bloomy rind is completely edible and adds an earthy, mushroom-like taste. The interior becomes increasingly creamy as it ripens, making it perfect for spreading on crusty bread or crackers.</item>
+        <item>Brie is a soft French cheese with a creamy texture and rich, buttery flavor.Its white, bloomy rind is completely edible and adds an earthy, mushroom-like taste. The interior becomes increasingly creamy as it ripens, making it perfect for spreading on crusty bread or crackers.</item>
         <item>Burrata is a fresh Italian cheese made from mozzarella and cream. The outer shell is solid mozzarella, while the inside contains stracciatella and cream, giving it a unique, creamy texture. Best enjoyed fresh at room temperature.</item>
         <item>Cabrales is a Spanish blue cheese made from mixed milk (cow, goat, and sheep). It has a strong, pungent flavor with a creamy yet crumbly texture. Aged in natural caves, it develops distinctive blue-green veining throughout.</item>
         <item>Camembert is a soft-ripened French cheese with a white, bloomy rind. Similar to Brie but with a more intense flavor, it has a creamy texture that becomes runny when fully ripe. Perfect for baking or enjoying with wine.</item>
@@ -261,55 +261,5 @@
         <item>Pasta, risotto, aged balsamic, pears</item>
         <item>Pasta, black pepper, arugula</item>
         <item>Pears, walnuts, honey, crusty bread</item>
-    </string-array>
-
-    <!-- Filter Categories -->
-
-    <!-- Milk Source Categories -->
-    <string-array name="milk_source_categories">
-        <item>Cow\'s Milk</item>
-        <item>Goat\'s Milk</item>
-        <item>Sheep\'s Milk</item>
-        <item>Buffalo\'s Milk</item>
-        <item>Mixed Milk</item>
-    </string-array>
-
-    <!-- Texture Categories -->
-    <string-array name="texture_categories">
-        <item>Soft</item>
-        <item>Semi-soft</item>
-        <item>Semi-hard</item>
-        <item>Hard</item>
-        <item>Crumbly</item>
-        <item>Spreadable</item>
-    </string-array>
-
-    <!-- Aging Categories -->
-    <string-array name="aging_categories">
-        <item>Fresh (0–2 weeks)</item>
-        <item>Young (2–8 weeks)</item>
-        <item>Matured (2–6 months)</item>
-        <item>Aged (6 months–1 year)</item>
-        <item>Extra Aged (1+ years)</item>
-    </string-array>
-
-    <!-- Flavor Categories -->
-    <string-array name="flavor_categories">
-        <item>Mild</item>
-        <item>Buttery</item>
-        <item>Nutty</item>
-        <item>Tangy</item>
-        <item>Sharp</item>
-        <item>Pungent</item>
-        <item>Sweet</item>
-    </string-array>
-
-    <!-- Main Category Groups -->
-    <string-array name="main_category_groups">
-        <item>Soft Cheese</item>
-        <item>Semi-Hard Cheese</item>
-        <item>Hard Cheese</item>
-        <item>Fresh Cheese</item>
-        <item>Blue Cheese</item>
     </string-array>
 </resources>

@@ -45,7 +45,7 @@ class DetailCheese : Fragment() {
             cheeseData?.let { cheese ->
                 // Populate UI with cheese data
                 image.setImageResource(cheese.image)
-                name.text = cheese.name
+                name.text = cheese.fullName
                 origin.text = cheese.origin
                 milkType.text = cheese.milkSource
                 age.text = cheese.age
