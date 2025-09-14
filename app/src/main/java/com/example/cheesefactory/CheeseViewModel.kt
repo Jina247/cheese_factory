@@ -18,7 +18,19 @@ class CheeseViewModel: ViewModel() {
     private val selectedTexture = mutableSetOf<String>()
     private val selectedFlavour = mutableSetOf<String>()
     private val selectedAged = mutableSetOf<String>()
+    private val _searchQuery = MutableLiveData("")
+    val searchQuery: LiveData<String> = _searchQuery
+    private var vSearchQuery: String = ""
 
+    fun setSearchQuery(query: String) {
+        _searchQuery.value = query
+        vSearchQuery = query
+        applyFilters()
+    }
+
+    fun getCurrentSearchQuery(): String {
+        return _searchQuery.value ?: ""
+    }
     fun setUpCheese(cheeseImage : Array<Int>, cheeseName: Array<String>, cheeseFullName: Array<String>,
                     cheeseShortDesc: Array<String>, cheeseLongDesc: Array<String>,
                     cheeseOrigin: Array<String>, cheeseMilkSource: Array<String>,
@@ -82,7 +94,15 @@ class CheeseViewModel: ViewModel() {
         selectedTexture.clear(); selectedTexture.addAll(texture)
         selectedFlavour.clear(); selectedFlavour.addAll(flavour)
         selectedAged.clear(); selectedAged.addAll(age)
-        applyFilters()
+    }
+
+    fun getCurrentSelections(): Map<String, Set<String>> {
+        return mapOf(
+            "milk" to selectedMilk.toSet(),
+            "texture" to selectedTexture.toSet(),
+            "flavour" to selectedFlavour.toSet(),
+            "age" to selectedAged.toSet()
+        )
     }
 
     private fun applyFilters() {
@@ -104,6 +124,14 @@ class CheeseViewModel: ViewModel() {
         if (selectedAged.isNotEmpty()) {
             result = result.filter { it.age in selectedAged }.toMutableList()
         }
+
+        if (vSearchQuery.isNotEmpty()) {
+            result = result.filter { it.name.contains(vSearchQuery, ignoreCase = true) }.toMutableList()
+        }
         _filteredList.value = result
+    }
+
+    fun applySelectedFilters() {
+        applyFilters()
     }
 }

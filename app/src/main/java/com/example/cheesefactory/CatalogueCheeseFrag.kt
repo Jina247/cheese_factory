@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import java.util.Locale
 
 class CatalogueCheeseFrag : Fragment() {
     private val viewModel: CheeseViewModel by lazy {
@@ -74,14 +73,22 @@ class CatalogueCheeseFrag : Fragment() {
         }
 
         val searchView = view.findViewById<SearchView>(R.id.searchView)
+        viewModel.searchQuery.observe(viewLifecycleOwner) { savedQuery ->
+            if (searchView.query.toString() != savedQuery && savedQuery.isNotEmpty()) {
+                searchView.setQuery(savedQuery, false)
+            }
+        }
+
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextChange(p0: String?): Boolean {
-                searchList(p0)
+                viewModel.setSearchQuery(p0 ?: "")
+                viewModel.getCurrentSearchQuery()
                 return true
             }
 
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                searchList(p0)
+                viewModel.setSearchQuery(p0 ?: "")
+                viewModel.getCurrentSearchQuery()
                 return true
             }
         })
@@ -145,31 +152,14 @@ class CatalogueCheeseFrag : Fragment() {
         val submit: LinearLayout = view.findViewById(R.id.submitBtn)
         submit.setOnClickListener {
             viewModel.setFilters(tempMilk, tempTexture, tempFlavour, tempAge)
-            viewModel.filteredList.observe(viewLifecycleOwner) { cheeseData ->
-                cheeseAdapter.updateList(cheeseData)
-                filterSection.isGone = true
-            }
+            viewModel.applySelectedFilters()
+            filterSection.isGone = true
+        }
+        viewModel.filteredList.observe(viewLifecycleOwner) { cheeseData ->
+            cheeseAdapter.updateList(cheeseData)
         }
     }
 
-    private fun searchList(query: String?) {
-        if (query != null) {
-            val filteredList = ArrayList<CheeseData>()
-            for (i in viewModel.cheeseList.value!!) {
-                if (i.name.lowercase(Locale.ROOT).contains(query.lowercase(Locale.ROOT)) ) {
-                    filteredList.add(i)
-                }
-            }
-
-            if (filteredList.isEmpty()) {
-                Toast.makeText(requireContext(), "No cheese is found", Toast.LENGTH_SHORT)
-                    .show()
-                cheeseAdapter.updateList(mutableListOf())
-            } else {
-                cheeseAdapter.updateList(filteredList)
-            }
-        }
-    }
     fun setUpCheeseHelper() {
         val cheeseImg = arrayOf(
             R.drawable.brie,
@@ -243,6 +233,16 @@ class CatalogueCheeseFrag : Fragment() {
         val goat: Chip = chipGroup.findViewById(R.id.goat)
         val mixed: Chip = chipGroup.findViewById(R.id.mixed)
 
+        val currentSelections = viewModel.getCurrentSelections()["milk"] ?: emptySet()
+        cow.isChecked = currentSelections.contains("Cow\'s Milk")
+        buffalo.isChecked = currentSelections.contains("Buffalo's Milk")
+        sheep.isChecked = currentSelections.contains("Sheep's Milk")
+        goat.isChecked = currentSelections.contains("Goat's Milk")
+        mixed.isChecked = currentSelections.contains("Mixed Milk")
+
+        tempMilk.clear()
+        tempMilk.addAll(currentSelections)
+
         cow.setOnCheckedChangeListener { it, isChecked ->
             tempMilk.setUpHelper("Cow\'s Milk", isChecked)
         }
@@ -271,6 +271,17 @@ class CatalogueCheeseFrag : Fragment() {
         val hard: Chip = chipGroup.findViewById(R.id.hard)
         val crumbly: Chip = chipGroup.findViewById(R.id.crumbly)
         val spreadable: Chip = chipGroup.findViewById(R.id.spread)
+
+        val currentSelections = viewModel.getCurrentSelections()["texture"] ?: emptySet()
+        soft.isChecked = currentSelections.contains("Soft")
+        s_soft.isChecked = currentSelections.contains("Semi-soft")
+        s_hard.isChecked = currentSelections.contains("Semi-hard")
+        hard.isChecked = currentSelections.contains("Hard")
+        crumbly.isChecked = currentSelections.contains("Crumbly")
+        spreadable.isChecked = currentSelections.contains("Spreadable")
+
+        tempTexture.clear()
+        tempTexture.addAll(currentSelections)
 
         soft.setOnCheckedChangeListener { it, isChecked ->
             tempTexture.setUpHelper("Soft", isChecked)
@@ -305,6 +316,18 @@ class CatalogueCheeseFrag : Fragment() {
         val sharp: Chip = chipGroup.findViewById(R.id.sharp)
         val pungent: Chip = chipGroup.findViewById(R.id.pungent)
         val sweet: Chip = chipGroup.findViewById(R.id.sweet)
+
+        val currentSelections = viewModel.getCurrentSelections()["flavour"] ?: emptySet()
+        mild.isChecked = currentSelections.contains("Mild")
+        buttery.isChecked = currentSelections.contains("Buttery")
+        nutty.isChecked = currentSelections.contains("Nutty")
+        tangy.isChecked = currentSelections.contains("Tangy")
+        sharp.isChecked = currentSelections.contains("Sharp")
+        pungent.isChecked = currentSelections.contains("Pungent")
+        sweet.isChecked = currentSelections.contains("Sweet")
+
+        tempFlavour.clear()
+        tempFlavour.addAll(currentSelections)
 
         mild.setOnCheckedChangeListener { it, isChecked ->
             tempFlavour.setUpHelper("Mild", isChecked)
@@ -341,6 +364,16 @@ class CatalogueCheeseFrag : Fragment() {
         val aged: Chip = chipGroup.findViewById(R.id.aged)
         val xAged: Chip = chipGroup.findViewById(R.id.extraAged)
 
+        val currentSelections = viewModel.getCurrentSelections()["age"] ?: emptySet()
+        fresh.isChecked = currentSelections.contains("Fresh (0-2 weeks)")
+        young.isChecked = currentSelections.contains("Young (2-8 weeks)")
+        matured.isChecked = currentSelections.contains("Matured (2-6 months)")
+        aged.isChecked = currentSelections.contains("Aged (6 months-1 year)")
+        xAged.isChecked = currentSelections.contains("Extra Aged (1+ years)")
+
+        tempAge.clear()
+        tempAge.addAll(currentSelections)
+
         fresh.setOnCheckedChangeListener { it, isChecked ->
             tempAge.setUpHelper("Fresh (0-2 weeks)", isChecked)
         }
@@ -362,7 +395,6 @@ class CatalogueCheeseFrag : Fragment() {
         }
 
     }
-
     private fun MutableSet<String>.setUpHelper(value: String, isChecked: Boolean) {
         if (isChecked) add(value) else remove(value)
     }

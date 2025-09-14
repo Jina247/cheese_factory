@@ -66,419 +66,410 @@
             android:layout_height="wrap_content"
             android:padding="12dp">
 
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
-                android:layout_gravity="center"
-                android:padding="8dp">
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:id="@+id/filterSection">
 
                 <LinearLayout
+                    android:id="@+id/milkTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    android:id="@+id/filterSection">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:descendantFocusability="blocksDescendants">
 
-                    <LinearLayout
-                        android:id="@+id/milkTitle"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="5dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:descendantFocusability="blocksDescendants">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="By milk source"
-                            android:gravity="center|start"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/terracotta"
-                            android:fontFamily="@font/poppins"
-                            android:paddingBottom="4dp"/>
-                        <ImageView
-                            android:id="@+id/mImg"
-                            android:layout_width="48dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/rounded_arrow_forward_ios_24"
-                            android:background="@android:color/transparent"
-                            app:tint="@color/terracotta"/>
-                    </LinearLayout>
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/milkChipGrp"
-                        android:layout_width="match_parent"
+                        android:text="By milk source"
+                        android:gravity="center|start"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/terracotta"
+                        android:fontFamily="@font/poppins"
+                        android:paddingBottom="4dp"/>
+                    <ImageView
+                        android:id="@+id/mImg"
+                        android:layout_width="48dp"
                         android:layout_height="wrap_content"
-                        app:singleSelection="false"
-                        app:chipSpacing="8dp"
-                        app:lineSpacing="4dp">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/cow"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cow"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/buffalo"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Buffalo"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/sheep"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sheep"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/goat"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Goat"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/mixed"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Mixed"/>
-
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <LinearLayout
-                        android:id="@+id/textureTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:descendantFocusability="blocksDescendants"
-                        android:layout_marginTop="5dp"
-                        android:clickable="true"
-                        android:focusable="true">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="By texture"
-                            android:gravity="center|start"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/terracotta"
-                            android:fontFamily="@font/poppins"
-                            android:paddingBottom="4dp"/>
-
-                        <ImageView
-                            android:id="@+id/tImg"
-                            android:layout_width="48dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/rounded_arrow_forward_ios_24"
-                            android:background="@android:color/transparent"
-                            app:tint="@color/terracotta" />
-                    </LinearLayout>
-
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/textureChipGrp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:singleSelection="false"
-                        app:chipSpacing="8dp"
-                        app:lineSpacing="4dp">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/soft"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Soft" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/s_soft"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Semi-soft"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/s_hard"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Semi-hard"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/hard"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Hard"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/crumbly"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Crumbly"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/spread"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Spreadable"/>
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <LinearLayout
-                        android:id="@+id/flavourTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="5dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:descendantFocusability="blocksDescendants">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="By flavour"
-                            android:gravity="center|start"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/terracotta"
-                            android:fontFamily="@font/poppins"
-                            android:paddingBottom="4dp"/>
-
-                        <ImageView
-                            android:id="@+id/fImg"
-                            android:layout_width="48dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/rounded_arrow_forward_ios_24"
-                            android:background="@android:color/transparent"
-                            app:tint="@color/terracotta"/>
-                    </LinearLayout>
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/flavourChipGrp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:singleSelection="false"
-                        app:chipSpacing="8dp"
-                        app:lineSpacing="4dp">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/mild"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="Mild"
-                            app:chipStrokeWidth="0.5dp"
-                            app:chipCornerRadius="24dp"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/buttery"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            app:chipCornerRadius="24dp"
-                            android:fontFamily="@font/poppins"
-                            android:text="Buttery"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/nutty"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Nutty"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/tangy"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Tangy"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/sharp"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Sharp"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/pungent"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Pungent"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/sweet"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Sweet"/>
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <LinearLayout
-                        android:id="@+id/ageTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="5dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:descendantFocusability="blocksDescendants">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="By aged"
-                            android:gravity="center|start"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/terracotta"
-                            android:fontFamily="@font/poppins"
-                            android:paddingBottom="4dp"/>
-
-                        <ImageView
-                            android:id="@+id/aImg"
-                            android:layout_width="48dp"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/rounded_arrow_forward_ios_24"
-                            android:background="@android:color/transparent"
-                            app:tint="@color/terracotta" />
-                    </LinearLayout>
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/ageChipGrp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:singleSelection="false"
-                        app:chipSpacing="8dp"
-                        app:lineSpacing="4dp">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/fresh"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="Fresh (0–2 weeks)"
-                            app:chipStrokeWidth="0.5dp"
-                            app:chipCornerRadius="24dp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/young"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            app:chipCornerRadius="24dp"
-                            android:fontFamily="@font/poppins"
-                            android:text="Young (2–8 weeks)"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/matured"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Matured (2–6 months)"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/aged"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Aged (6 months–1 year)"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/extraAged"
-                            style="@style/MyFilterChip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:chipStrokeWidth="0.5dp"
-                            android:fontFamily="@font/poppins"
-                            app:chipCornerRadius="24dp"
-                            android:text="Extra Aged (1+ years)"/>
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <LinearLayout
-                        android:id="@+id/submitBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="end"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:descendantFocusability="blocksDescendants">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Submit"
-                            android:fontFamily="@font/poppins"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:layout_gravity="center_vertical"
-                            android:textColor="@color/timber"/>
-
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/rounded_arrow_forward_24"
-                            app:tint="@color/timber" />
-
-                    </LinearLayout>
+                        android:src="@drawable/rounded_arrow_forward_ios_24"
+                        android:background="@android:color/transparent"
+                        app:tint="@color/terracotta"/>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/milkChipGrp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="false"
+                    app:chipSpacing="8dp"
+                    app:lineSpacing="4dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/cow"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cow"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/buffalo"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Buffalo"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sheep"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sheep"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/goat"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Goat"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/mixed"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mixed"/>
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <LinearLayout
+                    android:id="@+id/textureTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:descendantFocusability="blocksDescendants"
+                    android:layout_marginTop="5dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="By texture"
+                        android:gravity="center|start"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/terracotta"
+                        android:fontFamily="@font/poppins"
+                        android:paddingBottom="4dp"/>
+
+                    <ImageView
+                        android:id="@+id/tImg"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/rounded_arrow_forward_ios_24"
+                        android:background="@android:color/transparent"
+                        app:tint="@color/terracotta" />
+                </LinearLayout>
+
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/textureChipGrp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="false"
+                    app:chipSpacing="8dp"
+                    app:lineSpacing="4dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/soft"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Soft" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/s_soft"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semi-soft"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/s_hard"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Semi-hard"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/hard"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Hard"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/crumbly"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Crumbly"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/spread"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Spreadable"/>
+                </com.google.android.material.chip.ChipGroup>
+
+                <LinearLayout
+                    android:id="@+id/flavourTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:descendantFocusability="blocksDescendants">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="By flavour"
+                        android:gravity="center|start"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/terracotta"
+                        android:fontFamily="@font/poppins"
+                        android:paddingBottom="4dp"/>
+
+                    <ImageView
+                        android:id="@+id/fImg"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/rounded_arrow_forward_ios_24"
+                        android:background="@android:color/transparent"
+                        app:tint="@color/terracotta"/>
+                </LinearLayout>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/flavourChipGrp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="false"
+                    app:chipSpacing="8dp"
+                    app:lineSpacing="4dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/mild"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Mild"
+                        app:chipStrokeWidth="0.5dp"
+                        app:chipCornerRadius="24dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/buttery"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        app:chipCornerRadius="24dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Buttery"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/nutty"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Nutty"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/tangy"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Tangy"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sharp"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Sharp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/pungent"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Pungent"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sweet"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Sweet"/>
+                </com.google.android.material.chip.ChipGroup>
+
+                <LinearLayout
+                    android:id="@+id/ageTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:descendantFocusability="blocksDescendants">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="By aged"
+                        android:gravity="center|start"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/terracotta"
+                        android:fontFamily="@font/poppins"
+                        android:paddingBottom="4dp"/>
+
+                    <ImageView
+                        android:id="@+id/aImg"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/rounded_arrow_forward_ios_24"
+                        android:background="@android:color/transparent"
+                        app:tint="@color/terracotta" />
+                </LinearLayout>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/ageChipGrp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="false"
+                    app:chipSpacing="8dp"
+                    app:lineSpacing="4dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/fresh"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Fresh (0–2 weeks)"
+                        app:chipStrokeWidth="0.5dp"
+                        app:chipCornerRadius="24dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/young"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        app:chipCornerRadius="24dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Young (2–8 weeks)"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/matured"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Matured (2–6 months)"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/aged"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Aged (6 months–1 year)"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/extraAged"
+                        style="@style/MyFilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipStrokeWidth="0.5dp"
+                        android:fontFamily="@font/poppins"
+                        app:chipCornerRadius="24dp"
+                        android:text="Extra Aged (1+ years)"/>
+                </com.google.android.material.chip.ChipGroup>
+
+                <LinearLayout
+                    android:id="@+id/submitBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:descendantFocusability="blocksDescendants">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Submit"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/timber"/>
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/rounded_arrow_forward_24"
+                        app:tint="@color/timber" />
+
+                </LinearLayout>
+            </LinearLayout>
 
         </ScrollView>
 
